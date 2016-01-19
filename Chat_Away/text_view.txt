@@ -1,0 +1,10 @@
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Not a member yet? Sign up!"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="70dp"
+        android:id="@+id/tvSignup"
+        android:textColor="#0c10ed"
+        android:onClick="tvSignup_Click" />
