@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void bttnSignup_Click(View view) {
-        Intent intent = new Intent(this, SignupActivity.class);
+        Intent intent = new Intent(MainActivity.this, SignupActivity.class);
         startActivity(intent);
     }
 }
