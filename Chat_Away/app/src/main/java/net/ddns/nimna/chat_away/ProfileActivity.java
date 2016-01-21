@@ -19,7 +19,7 @@ public class ProfileActivity extends AppCompatActivity {
         Bundle extra = getIntent().getExtras();
         tvUsernameProfile = (TextView)findViewById(R.id.tvUsernameProfile);
         //Intent intent = getIntent();
-        tvUsernameProfile.setText(extra.getString("username"));
+        tvUsernameProfile.setText(extra.getString("username") + "!");
     }
     public void setUsername(String username) {
         this.username = username;
