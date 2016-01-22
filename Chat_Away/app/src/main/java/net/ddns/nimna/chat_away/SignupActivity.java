@@ -59,8 +59,7 @@ public class SignupActivity extends AppCompatActivity {
                 }
                 else {
                     Toast.makeText(SignupActivity.this, "Profile created successfully!", Toast.LENGTH_SHORT).show();
-                    //ProfileActivity profile = new ProfileActivity();
-                    //profile.setUsername(username);
+                    //HTTPSignup httpSignup = new HTTPSignup(username, password, email);
                     Intent i = new Intent(SignupActivity.this, ProfileActivity.class);
                     i.putExtra("username", username);
                     startActivity(i);
