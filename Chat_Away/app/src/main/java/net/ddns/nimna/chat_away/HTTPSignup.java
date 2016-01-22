@@ -40,8 +40,8 @@ public class HTTPSignup {
             bufferedWriter.flush();
             bufferedWriter.close();
             outputStream.close();
-            //InputStream inputStream = httpURLConnection.getInputStream();
-            //inputStream.close();
+            InputStream inputStream = httpURLConnection.getInputStream();
+            inputStream.close();
             httpURLConnection.disconnect();
         } catch (MalformedURLException e) {
             e.printStackTrace();
