@@ -58,11 +58,13 @@ public class SignupActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Passwords don't match", Toast.LENGTH_SHORT).show(); //getApplication(), getApplicationContext(), SignupActivity.this
                 }
                 else {
-                    Toast.makeText(SignupActivity.this, "Profile created successfully!", Toast.LENGTH_SHORT).show();
-                    HTTPSignup httpSignup = new HTTPSignup(username, password, email);
-                    Intent i = new Intent(SignupActivity.this, ProfileActivity.class);
-                    i.putExtra("username", username);
-                    startActivity(i);
+                    User user = new User(username, 0, email, password);
+                    userSignUp(user);
+//                    Toast.makeText(SignupActivity.this, "Profile created successfully!", Toast.LENGTH_SHORT).show();
+//
+//                    Intent i = new Intent(SignupActivity.this, ProfileActivity.class);
+//                    i.putExtra("username", username);
+//                    startActivity(i);
                 }
             }
         });
@@ -71,5 +73,9 @@ public class SignupActivity extends AppCompatActivity {
 
     }
 
+    private void userSignUp(User user){
+        ServerRequests sr = new ServerRequests();
+        sr.storeUserDataInBackground(user);
+    }
 
 }
