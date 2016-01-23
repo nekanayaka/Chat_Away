@@ -14,9 +14,13 @@ import android.widget.Toast;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Formatter;
 
 /**
  * Created by nekanayaka on 1/18/2016.
@@ -58,9 +62,9 @@ public class SignupActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Passwords don't match", Toast.LENGTH_SHORT).show(); //getApplication(), getApplicationContext(), SignupActivity.this
                 }
                 else {
-                    User user = new User(username, 0, email, password);
+                    User user = new User(username, 0, email, encryptPassword(password));
                     userSignUp(user);
-//                    Toast.makeText(SignupActivity.this, "Profile created successfully!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignupActivity.this, "Profile created successfully!", Toast.LENGTH_SHORT).show();
 //
 //                    Intent i = new Intent(SignupActivity.this, ProfileActivity.class);
 //                    i.putExtra("username", username);
@@ -76,6 +80,39 @@ public class SignupActivity extends AppCompatActivity {
     private void userSignUp(User user){
         ServerRequests sr = new ServerRequests();
         sr.storeUserDataInBackground(user);
+    }
+
+    private static String encryptPassword(String password)
+    {
+        String sha1 = "";
+        try
+        {
+            MessageDigest crypt = MessageDigest.getInstance("SHA-1");
+            crypt.reset();
+            crypt.update(password.getBytes("UTF-8"));
+            sha1 = byteToHex(crypt.digest());
+        }
+        catch(NoSuchAlgorithmException e)
+        {
+            e.printStackTrace();
+        }
+        catch(UnsupportedEncodingException e)
+        {
+            e.printStackTrace();
+        }
+        return sha1;
+    }
+
+    private static String byteToHex(final byte[] hash)
+    {
+        Formatter formatter = new Formatter();
+        for (byte b : hash)
+        {
+            formatter.format("%02x", b);
+        }
+        String result = formatter.toString();
+        formatter.close();
+        return result;
     }
 
 }

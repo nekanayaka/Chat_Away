@@ -20,7 +20,7 @@ import java.net.URLEncoder;
  */
 public class ServerRequests {
 
-    public static final String SERVER_ADDRESS = "http://nimna.ddns.net/webservices/signup.php";
+    public static final String SERVER_ADDRESS = "http://nekanaya.hccis.info/webservices/signup.php";
 
     public ServerRequests(){
 
@@ -49,7 +49,7 @@ public class ServerRequests {
                 Log.d("ASYNCTASK", "Got inside task");
                 String data  = URLEncoder.encode("username", "UTF-8") + "=" + URLEncoder.encode(user.getUsername(), "UTF-8");
                 data += "&" + URLEncoder.encode("password", "UTF-8") + "=" + URLEncoder.encode(user.getPassword(), "UTF-8");
-                data += "&" + URLEncoder.encode("password", "UTF-8") + "=" + URLEncoder.encode(user.getEmail(), "UTF-8");
+                data += "&" + URLEncoder.encode("email", "UTF-8") + "=" + URLEncoder.encode(user.getEmail(), "UTF-8");
 
                 URL url = new URL(SERVER_ADDRESS);
                 URLConnection conn = url.openConnection();
