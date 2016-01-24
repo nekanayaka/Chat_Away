@@ -1,17 +1,16 @@
 <?php  
  require "init.php";  
- $username = $_POST["username"];  
- $password =  $_POST["password"];  
+ $username = $mysqli->real_escape_string($_POST["username"]);
+ $password =  $mysqli->real_escape_string($_POST["password"]);
  $sql_query = "select username from users where username = '$username' and password = '$password'";  
- $result = mysqli_query($con,$sql_query);  
- if(mysqli_num_rows($result) > 0)  
- {  
-	$row = mysqli_fetch_assoc($result);  
-	$name =	$row["username"];  
-	echo "Login Success..Welcome ".$name;  
- }  
- else  
- {   
-	echo "Wrong Username or Password!";  
- }  
+ $result = $mysqli->query($sql_query);
+ $row = $result->fetch_assoc($result);
+ $name = $row["username"];
+ 
+ if($name)
+ {
+	echo $name;
+ }
+
+$mysqli->close(); 
  ?> 

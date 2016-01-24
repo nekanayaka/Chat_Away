@@ -65,6 +65,8 @@ public class SignupActivity extends AppCompatActivity {
                     User user = new User(username, 0, email, encryptPassword(password));
                     userSignUp(user);
                     Toast.makeText(SignupActivity.this, "Profile created successfully!", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(SignupActivity.this, MainActivity.class);
+                    startActivity(i);
 //
 //                    Intent i = new Intent(SignupActivity.this, ProfileActivity.class);
 //                    i.putExtra("username", username);
