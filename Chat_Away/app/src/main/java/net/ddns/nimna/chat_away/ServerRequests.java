@@ -20,7 +20,7 @@ import java.net.URLEncoder;
  */
 public class ServerRequests {
 
-    public static final String SERVER_ADDRESS = "http://nimna.ddns.net/webservices/signup.php";
+    public static final String SERVER_ADDRESS = "http://nimna.ddns.net/webservices/signup.php"; //http://nimna.ddns.net
 
     public ServerRequests(){
 

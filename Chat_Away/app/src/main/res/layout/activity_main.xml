@@ -1,55 +1,28 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"  
-   xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"  
-   android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"  
-   android:paddingRight="@dimen/activity_horizontal_margin"  
-   android:paddingTop="@dimen/activity_vertical_margin"  
-   android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"  
-   android:background="#6f80bb"
-   android:orientation="vertical"  
-   >  
-   <TextView  
-     android:layout_width="wrap_content"  
-     android:layout_height="wrap_content"  
-     android:text="Login"
-     android:textAppearance="?android:textAppearanceLarge"  
-     android:textStyle="bold"  
-     android:layout_gravity="center_horizontal"  
-     android:layout_marginTop="10dp"  
-     />  
-   <EditText  
-     android:layout_width="250dp"  
-     android:layout_height="wrap_content"  
-     android:hint="Username"
-     android:id="@+id/tfUsername"
-     android:layout_gravity="center_horizontal"  
-     android:layout_marginTop="70dp"  
-     />  
-   <EditText  
-     android:layout_width="250dp"  
-     android:layout_height="wrap_content"  
-     android:hint="Password"  
-     android:id="@+id/tfPassword"
-     android:layout_gravity="center_horizontal"  
-     android:layout_marginTop="20dp"  
-     android:inputType="textPassword"  
-     />  
-   <Button  
-     android:layout_width="100dp"  
-     android:layout_height="wrap_content"  
-     android:text="Login"  
-     android:layout_gravity="center_horizontal"  
-     android:layout_marginTop="30dp"
-     android:onClick="bttnLogin_Click"
-       android:id="@+id/bttnLogin" />
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#6f80bb"
+    android:weightSum="1">
 
-    <Button
-        android:layout_width="wrap_content"
+
+    <ImageView
+        android:layout_width="261dp"
+        android:layout_height="167dp"
+        android:id="@+id/imageView"
+        android:src="@drawable/ic_chataway"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="103dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="164dp"
         android:layout_height="wrap_content"
-        android:text="Sign Up"
-        android:id="@+id/bttnSignup"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="70dp"
-        android:onClick="bttnSignup_Click" />
+        android:id="@+id/progressBar"
+        android:layout_gravity="bottom"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true" />
 
-
-</LinearLayout>
+</RelativeLayout>

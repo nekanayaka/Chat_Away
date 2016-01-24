@@ -1,9 +1,7 @@
 package net.ddns.nimna.chat_away;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -11,13 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
-import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLEncoder;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Formatter;
@@ -65,7 +57,7 @@ public class SignupActivity extends AppCompatActivity {
                     User user = new User(username, 0, email, encryptPassword(password));
                     userSignUp(user);
                     Toast.makeText(SignupActivity.this, "Profile created successfully!", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(SignupActivity.this, MainActivity.class);
+                    Intent i = new Intent(SignupActivity.this, SigninActivity.class);
                     startActivity(i);
 //
 //                    Intent i = new Intent(SignupActivity.this, ProfileActivity.class);
