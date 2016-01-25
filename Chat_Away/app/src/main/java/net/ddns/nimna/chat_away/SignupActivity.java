@@ -33,7 +33,6 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        
         tfUsernameReg = (EditText)findViewById(R.id.tfUsernameReg);
         tfEmailReg = (EditText)findViewById(R.id.tfEmailReg);
         tfPasswordReg = (EditText)findViewById(R.id.tfPasswordReg);
