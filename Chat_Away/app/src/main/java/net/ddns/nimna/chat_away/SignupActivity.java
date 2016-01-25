@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.parse.Parse;
+
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -31,6 +33,7 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
+        
         tfUsernameReg = (EditText)findViewById(R.id.tfUsernameReg);
         tfEmailReg = (EditText)findViewById(R.id.tfEmailReg);
         tfPasswordReg = (EditText)findViewById(R.id.tfPasswordReg);
