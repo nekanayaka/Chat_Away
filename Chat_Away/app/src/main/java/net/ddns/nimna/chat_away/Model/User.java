@@ -22,6 +22,15 @@ public class User {
         this.banStatus = banStatus;
     }
 
+    public User( String userName, int id, String email, String password,String accountLevel, String coordinates) {
+        this.id = id;
+        this.userName = userName;
+        this.password = password;
+        this.email = email;
+        this.accountLevel = accountLevel;
+        this.coordinates = coordinates;
+    }
+
     public String getCoordinates() {
         return coordinates;
     }

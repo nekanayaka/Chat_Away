@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import com.parse.Parse;
 
+import net.ddns.nimna.chat_away.Model.User;
+
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -56,7 +58,9 @@ public class SignupActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Passwords don't match", Toast.LENGTH_SHORT).show(); //getApplication(), getApplicationContext(), SignupActivity.this
                 }
                 else {
-                    User user = new User(username, 0, email, encryptPassword(password));
+                    String accountLevel = "regular";
+                    String coordinates = "something";
+                    User user = new User(username, 0, email, encryptPassword(password), accountLevel, coordinates);
                     userSignUp(user);
                     Toast.makeText(SignupActivity.this, "Profile created successfully!", Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(SignupActivity.this, SigninActivity.class);
