@@ -3,7 +3,6 @@ package net.ddns.nimna.chat_away;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import net.ddns.nimna.chat_away.DAO.UserDAO;
 import net.ddns.nimna.chat_away.Model.User;
 
 import org.json.JSONException;
@@ -17,7 +16,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
-
 
 /**
  * Created by Chris on 2016-01-22.
@@ -56,7 +54,8 @@ public class ServerRequests {
                 String data  = URLEncoder.encode("username", "UTF-8") + "=" + URLEncoder.encode(user.getUserName(), "UTF-8");
                 data += "&" + URLEncoder.encode("password", "UTF-8") + "=" + URLEncoder.encode(user.getPassword(), "UTF-8");
                 data += "&" + URLEncoder.encode("email", "UTF-8") + "=" + URLEncoder.encode(user.getEmail(), "UTF-8");
-                data += "&" + URLEncoder.encode("coordinates", "UTF-8") + "=" + URLEncoder.encode(user.getCoordinates(), "UTF-8");
+                data += "&" + URLEncoder.encode("latitude", "UTF-8") + "=" + URLEncoder.encode(user.getLatitude(), "UTF-8");
+                data += "&" + URLEncoder.encode("longitude", "UTF-8") + "=" + URLEncoder.encode(user.getLongitude(), "UTF-8");
                 data += "&" + URLEncoder.encode("accountLevel", "UTF-8") + "=" + URLEncoder.encode(user.getAccountLevel(), "UTF-8");
 
                 URL url = new URL(SERVER_ADDRESS+fileName);
@@ -168,10 +167,13 @@ public class ServerRequests {
                     String username = jobject.getString("username");
                     String password = jobject.getString("password");
                     String accountLevel = jobject.getString("accountLevel");
-                    String coordinates = jobject.getString("coordinates");
+                    String email = jobject.getString("email");
+                    //String coordinates = jobject.getString("coordinates");
+                    String latitude = jobject.getString("latitude");
+                    String longitude = jobject.getString("longitude");
                     int userID = jobject.getInt("userID");
 
-                    User user = new User(username, userID, "something", password, accountLevel, coordinates);
+                    User user = new User(userID, username, password, email, accountLevel, latitude, longitude);
                     Log.d("USER", user.getUserName()+", "+user.getId()+", "+user.getPassword());
                 }
             } catch (JSONException e) {
@@ -248,13 +250,13 @@ public class ServerRequests {
                     String username = jobject.getString("username");
                     String password = jobject.getString("password");
                     String accountLevel = jobject.getString("accountLevel");
-                    String latitude = jobject.getString("latitude");
+                    String email = jobject.getString("email");
+                    String latitiude = jobject.getString("latitude");
                     String longitude = jobject.getString("longitude");
                     int userID = jobject.getInt("userID");
 
-                    User user = new User(username, userID, "something", accountLevel, latitude, longitude);
-                    UserDAO db = ;
-                    Log.d("USER", user.getUserName()+", "+user.getId());
+                    User user = new User(userID, username, password, email, accountLevel, latitude, longitude);
+                    Log.d("USER", user.getUserName()+", "+user.getId()+", "+user.getPassword());
                 }
             } catch (JSONException e) {
                 e.printStackTrace();

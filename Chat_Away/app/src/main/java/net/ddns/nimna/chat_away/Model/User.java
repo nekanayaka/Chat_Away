@@ -11,6 +11,8 @@ public class User {
     private int requestingChat;
     private String accountLevel;
     private String coordinates;
+    private String latitude;
+    private String longitude;
 
 
     public User(int id, String userName, String email, double banStatus, int requestingChat, String accountLevel, String coordinates) {
@@ -20,12 +22,29 @@ public class User {
         this.banStatus = banStatus;
     }
 
-    public User( String userName, int id, String email, String password,String accountLevel, String coordinates) {
+    public User(int id, String userName, String password, String email, String accountLevel, String latitude, String longitude) {
         this.id = id;
         this.userName = userName;
         this.email = email;
         this.accountLevel = accountLevel;
-        this.coordinates = coordinates;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
 
     public String getCoordinates() {
