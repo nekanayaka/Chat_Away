@@ -22,23 +22,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="chataway_users.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="chataway_users.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chataway_users.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.35764375">
-              <caret line="21" column="10" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
+            <state vertical-scroll-proportion="-7.1923075">
+              <caret line="11" column="200" selection-start-line="11" selection-start-column="200" selection-end-line="11" selection-end-column="200" />
               <folding>
-                <marker date="1454779160943" expanded="true" signature="318:349" placeholder="SELECT * FRO..user..." />
+                <marker date="1454780134048" expanded="true" signature="318:349" placeholder="SELECT * FRO..user..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="chataway_login.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="chataway_login.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/chataway_login.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="40" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.61851335">
+              <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
               <folding>
                 <marker date="1454774660905" expanded="true" signature="313:397" placeholder="SELECT * FRO..user..." />
               </folding>
@@ -196,17 +196,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1454779160943" expanded="true" signature="318:349" placeholder="SELECT * FRO..user..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chataway_login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="40" selection-end-column="4" />
-          <folding>
-            <marker date="1454774660905" expanded="true" signature="313:397" placeholder="SELECT * FRO..user..." />
+            <marker date="1454780134048" expanded="true" signature="318:349" placeholder="SELECT * FRO..user..." />
           </folding>
         </state>
       </provider>
@@ -223,10 +213,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/chataway_users.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35764375">
-          <caret line="21" column="10" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
+        <state vertical-scroll-proportion="-7.1923075">
+          <caret line="11" column="200" selection-start-line="11" selection-start-column="200" selection-end-line="11" selection-end-column="200" />
           <folding>
-            <marker date="1454779160943" expanded="true" signature="318:349" placeholder="SELECT * FRO..user..." />
+            <marker date="1454780134048" expanded="true" signature="318:349" placeholder="SELECT * FRO..user..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chataway_login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.61851335">
+          <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
+          <folding>
+            <marker date="1454774660905" expanded="true" signature="313:397" placeholder="SELECT * FRO..user..." />
           </folding>
         </state>
       </provider>

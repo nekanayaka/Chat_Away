@@ -1,8 +1,10 @@
 package net.ddns.nimna.chat_away;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import net.ddns.nimna.chat_away.DAO.UserDAO;
 import net.ddns.nimna.chat_away.Model.User;
 
 import org.json.JSONException;
@@ -165,7 +167,7 @@ public class ServerRequests {
 
                 } else {
                     String username = jobject.getString("username");
-                    String password = jobject.getString("password");
+                    //String password = jobject.getString("password");
                     String accountLevel = jobject.getString("accountLevel");
                     String email = jobject.getString("email");
                     //String coordinates = jobject.getString("coordinates");
@@ -173,8 +175,8 @@ public class ServerRequests {
                     String longitude = jobject.getString("longitude");
                     int userID = jobject.getInt("userID");
 
-                    User user = new User(userID, username, password, email, accountLevel, latitude, longitude);
-                    Log.d("USER", user.getUserName()+", "+user.getId()+", "+user.getPassword());
+                    User user = new User(userID, username, email, accountLevel, latitude, longitude);
+                    Log.d("USER", user.getUserName()+", "+user.getId());
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -251,12 +253,15 @@ public class ServerRequests {
                     String password = jobject.getString("password");
                     String accountLevel = jobject.getString("accountLevel");
                     String email = jobject.getString("email");
-                    String latitiude = jobject.getString("latitude");
+                    String latitude = jobject.getString("latitude");
                     String longitude = jobject.getString("longitude");
                     int userID = jobject.getInt("userID");
 
-                    User user = new User(userID, username, password, email, accountLevel, latitude, longitude);
-                    Log.d("USER", user.getUserName()+", "+user.getId()+", "+user.getPassword());
+                    User user = new User(userID, username, email, accountLevel, latitude, longitude);
+                    Log.d("USER", user.getUserName()+", "+user.getId());
+                    UserDAO db = new UserDAO(null, null);
+                    db.insertUser(user);
+
                 }
             } catch (JSONException e) {
                 e.printStackTrace();

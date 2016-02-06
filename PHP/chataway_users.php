@@ -9,7 +9,7 @@ if(isset($_POST["latitude"])&&isset($_POST["longitude"])){
     $lat = $mysqli->real_escape_string($_POST["latitude"]);
     $long = $mysqli->real_escape_string($_POST["longitude"]);
 
-    $query = "SELECT * FROM user WHERE lat<='".$lat-$distance."' AND lat>='".$lat+$distance."'' AND long<='".$long-$distance."' AND long>='".$long+$distance."'";
+    $query = "SELECT * FROM user WHERE lat<='".$lat-$distance."' AND lat>='".$lat+$distance."'' AND long<='".$long-$distance."' AND long>='".$long+$distance."' AND requestingChat='1' AND banStatus='0'";
 
     $result = $mysqli->query($query);
 

@@ -38,8 +38,8 @@ public class UserDAO extends SQLiteOpenHelper {
             COLUMN_USERNAME + " INTEGER, " +
             //COLUMN_PASSWORD + " INTEGER, "+
             COLUMN_EMAIL + " TEXT, "+
-            COLUMN_BANSTATUS + " DOUBLE, "+
-            COLUMN_REQUESTING + " INTEGER, "+
+            //COLUMN_BANSTATUS + " DOUBLE, "+
+            //COLUMN_REQUESTING + " INTEGER, "+
             COLUMN_LEVEL + " TEXT, "+
             COLUMN_LATITUDE + " DOUBLE, " +
             COLUMN_LONGITUDE + "DOUBLE);";
@@ -110,8 +110,8 @@ public class UserDAO extends SQLiteOpenHelper {
             values.put("username", user.getUserName());
             //values.put("password", user.getPassword());
             values.put("email", user.getEmail());
-            values.put("banStatus", user.getBanStatus());
-            values.put("requestingChat", user.getRequestingChat());
+            //values.put("banStatus", user.getBanStatus());
+            //values.put("requestingChat", user.getRequestingChat());
             values.put("accountLevel", user.getAccountLevel());
             values.put("latitude", user.getLatitude());
             values.put("longitude", user.getLongitude());
@@ -224,7 +224,7 @@ public class UserDAO extends SQLiteOpenHelper {
         cursor =  db.rawQuery( "select * from " + TABLE_NAME + " where " + COLUMN_ID + "="+id+"", null );
         if(cursor.moveToFirst()) {
 
-            user = new User(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getDouble(4), cursor.getInt(5), cursor.getString(6), cursor.getString(7));
+            user = new User(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5));
 
         }
         return user;
