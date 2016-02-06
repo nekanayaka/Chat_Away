@@ -6,7 +6,6 @@ public class User {
 
     private int id;
     private String userName;
-    private String password;
     private String email;
     private String password;
     //private double banStatus;
@@ -59,8 +58,6 @@ public class User {
         this.accountLevel = accountLevel;
     }
 
-
-
     public String getEmail() {
         return email;
     }
@@ -75,14 +72,6 @@ public class User {
 
     public void setUserName(String userName) {
         this.userName = userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public int getId() {

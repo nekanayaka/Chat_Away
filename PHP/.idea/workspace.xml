@@ -38,9 +38,9 @@
         <entry file="file://$PROJECT_DIR$/chataway_login.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.61851335">
-              <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
+              <caret line="31" column="17" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
               <folding>
-                <marker date="1454774660905" expanded="true" signature="313:397" placeholder="SELECT * FRO..user..." />
+                <marker date="1454781575988" expanded="true" signature="313:397" placeholder="SELECT * FRO..user..." />
               </folding>
             </state>
           </provider>
@@ -52,6 +52,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/chataway_users.php" />
+        <option value="$PROJECT_DIR$/chataway_login.php" />
       </list>
     </option>
   </component>
@@ -206,7 +207,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="40" selection-end-column="4" />
           <folding>
-            <marker date="1454774660905" expanded="true" signature="313:397" placeholder="SELECT * FRO..user..." />
+            <marker date="1454781575988" expanded="true" signature="313:397" placeholder="SELECT * FRO..user..." />
           </folding>
         </state>
       </provider>
@@ -224,9 +225,9 @@
     <entry file="file://$PROJECT_DIR$/chataway_login.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.61851335">
-          <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
+          <caret line="31" column="17" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
           <folding>
-            <marker date="1454774660905" expanded="true" signature="313:397" placeholder="SELECT * FRO..user..." />
+            <marker date="1454781575988" expanded="true" signature="313:397" placeholder="SELECT * FRO..user..." />
           </folding>
         </state>
       </provider>
