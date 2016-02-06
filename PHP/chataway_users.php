@@ -19,7 +19,7 @@ if(isset($_POST["latitude"])&&isset($_POST["longitude"])){
 
         $user[$counter]['userID'] = $row["userID"];
         $user[$counter]['username'] = $row["username"];
-        $user[$counter]['password'] = $row["password"];
+        //$user[$counter]['password'] = $row["password"];
         $user[$counter]['email'] = $row["email"];
         $user[$counter]['banStatus'] = $row["banStatus"];
         $user[$counter]['accountLevel'] = $row["accountLevel"];

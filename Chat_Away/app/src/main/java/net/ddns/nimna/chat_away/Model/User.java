@@ -6,7 +6,6 @@ public class User {
 
     private int id;
     private String userName;
-    private String password;
     private String email;
     private double banStatus;
     private int requestingChat;
@@ -14,10 +13,9 @@ public class User {
     private String coordinates;
 
 
-    public User(int id, String userName, String password, String email, double banStatus, int requestingChat, String accountLevel, String coordinates) {
+    public User(int id, String userName, String email, double banStatus, int requestingChat, String accountLevel, String coordinates) {
         this.id = id;
         this.userName = userName;
-        this.password = password;
         this.email = email;
         this.banStatus = banStatus;
     }
@@ -25,7 +23,6 @@ public class User {
     public User( String userName, int id, String email, String password,String accountLevel, String coordinates) {
         this.id = id;
         this.userName = userName;
-        this.password = password;
         this.email = email;
         this.accountLevel = accountLevel;
         this.coordinates = coordinates;
@@ -69,14 +66,6 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getUserName() {

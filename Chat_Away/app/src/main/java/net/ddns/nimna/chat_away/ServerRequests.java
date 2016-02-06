@@ -3,6 +3,7 @@ package net.ddns.nimna.chat_away;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import net.ddns.nimna.chat_away.DAO.UserDAO;
 import net.ddns.nimna.chat_away.Model.User;
 
 import org.json.JSONException;
@@ -16,6 +17,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
+
 
 /**
  * Created by Chris on 2016-01-22.
@@ -246,12 +248,13 @@ public class ServerRequests {
                     String username = jobject.getString("username");
                     String password = jobject.getString("password");
                     String accountLevel = jobject.getString("accountLevel");
-                    String latitiude = jobject.getString("latitude");
+                    String latitude = jobject.getString("latitude");
                     String longitude = jobject.getString("longitude");
                     int userID = jobject.getInt("userID");
 
-                    User user = new User(username, userID, "something", password, accountLevel, latitude, longitude);
-                    Log.d("USER", user.getUserName()+", "+user.getId()+", "+user.getPassword());
+                    User user = new User(username, userID, "something", accountLevel, latitude, longitude);
+                    UserDAO db = ;
+                    Log.d("USER", user.getUserName()+", "+user.getId());
                 }
             } catch (JSONException e) {
                 e.printStackTrace();

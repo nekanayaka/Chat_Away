@@ -18,9 +18,10 @@ public class UserDAO extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "ChatAway";          // <=== Set to 'null' for an in-memory database
     public static final String TABLE_NAME = "User";
-    public static final String COLUMN_ID = "_id";           // <=== This is required
+    public static final String COLUMN_ID = "_id"; // <=== This is required
+    public static final String COLUMN_USERID = "userId";
     public static final String COLUMN_USERNAME = "username";
-    public static final String COLUMN_PASSWORD = "password";
+    //public static final String COLUMN_PASSWORD = "password";
     public static final String COLUMN_EMAIL = "email";
     public static final String COLUMN_BANSTATUS = "banStatus";
     public static final String COLUMN_REQUESTING = "requestingChat";
@@ -31,8 +32,9 @@ public class UserDAO extends SQLiteOpenHelper {
 
     private static final String SQL_CREATE_TABLE_DELIVERABLES = "CREATE TABLE " + TABLE_NAME + "( " +
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            COLUMN_USERID + "INTEGER"+
             COLUMN_USERNAME + " INTEGER, " +
-            COLUMN_PASSWORD + " INTEGER, "+
+            //COLUMN_PASSWORD + " INTEGER, "+
             COLUMN_EMAIL + " TEXT, "+
             COLUMN_BANSTATUS + " DOUBLE, "+
             COLUMN_REQUESTING + " INTEGER, "+
@@ -93,28 +95,35 @@ public class UserDAO extends SQLiteOpenHelper {
      * Helper method to insert a row into the 'Deliverables' table
      *
      */
-//    public boolean insertMessage(String name, double weight) {
-//        boolean success;
-//
-//        try {
-//            db = this.getWritableDatabase();
-//            ContentValues deliverableValues = new ContentValues();
-//
-//            // NAME, WEIGHT
-//            deliverableValues.put("name", name);
-//            deliverableValues.put("weight", weight);
-//
-//
-//            db.insert(TABLE_NAME, null, deliverableValues);
-//
-//            success = true;
-//        } catch ( SQLiteException ex ) {
-//            Log.d("DeliverableDAO", "Failed to insert into the database");
-//            success = false;
-//        }
-//
-//        return success;
-//    }
+    public boolean insertUser(User user) {
+        boolean success;
+
+        try {
+            db = this.getWritableDatabase();
+            ContentValues values = new ContentValues();
+
+            // NAME, WEIGHT
+            values.put("userId", user.getId());
+            values.put("username", user.getUserName());
+            //values.put("password", user.getPassword());
+            values.put("email", user.getEmail());
+            values.put("banStatus", user.getBanStatus());
+            values.put("requestingChat", user.getRequestingChat());
+            values.put("accountLevel", user.getAccountLevel());
+            values.put("latitude", user.getLatitude());
+            values.put("longitude", user.getLongitude());
+
+
+            db.insert(TABLE_NAME, null, values);
+
+            success = true;
+        } catch ( SQLiteException ex ) {
+            Log.d("DeliverableDAO", "Failed to insert into the database");
+            success = false;
+        }
+
+        return success;
+    }
 
 //    public boolean updateMessages(int id, String name, double weight) {
 //        boolean success;
@@ -141,22 +150,22 @@ public class UserDAO extends SQLiteOpenHelper {
 //    }
 
 
-//    public boolean deleteMessage(int id) {
-//        boolean success;
-//
-//        try {
-//            db = this.getWritableDatabase();
-//            db.delete(TABLE_NAME, COLUMN_ID + "=" + id, null);
-//
-//            success = true;
-//
-//        } catch( SQLiteException ex ) {
-//            Log.d("DeliverableDAO", "Failed to delete the record");
-//            success = false;
-//        }
-//        return success;
-//
-//    }
+    public boolean deleteUser(int userId) {
+        boolean success;
+
+        try {
+            db = this.getWritableDatabase();
+            db.delete(TABLE_NAME, COLUMN_USERID + "=" + userId, null);
+
+            success = true;
+
+        } catch( SQLiteException ex ) {
+            Log.d("DeliverableDAO", "Failed to delete the record");
+            success = false;
+        }
+        return success;
+
+    }
 
 //    public Cursor getMessagesCursor() {
 //
