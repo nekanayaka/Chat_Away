@@ -177,4 +177,87 @@ public class ServerRequests {
             }
         }
     }
+    public class FetchChatUsersDataAsyncTask extends AsyncTask<Void, Void, String>{
+
+        String latitude;
+        String longitude;
+
+        String fileName = "chataway_login.php";
+
+        public FetchChatUsersDataAsyncTask(String lat, String lon){
+
+            this.latitude = lat;
+            this.longitude = lon;
+        }
+        @Override
+        protected String doInBackground(Void... params) {
+            try {
+
+                Log.d("ASYNCTASK", "Got inside task");
+                String data  = URLEncoder.encode("latitude", "UTF-8") + "=" + URLEncoder.encode(latitude, "UTF-8");
+                data += "&" + URLEncoder.encode("longitude", "UTF-8") + "=" + URLEncoder.encode(longitude, "UTF-8");
+
+
+                URL url = new URL(SERVER_ADDRESS+fileName);
+                URLConnection conn = url.openConnection();
+
+                conn.setDoOutput(true);
+                OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+
+                wr.write( data );
+                wr.flush();
+
+                BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+                StringBuilder sb = new StringBuilder();
+                String line = null;
+
+                // Read Server Response
+                while((line = reader.readLine()) != null)
+                {
+                    sb.append(line);
+                    break;
+                }
+                String userData = sb.toString();
+                Log.d("User_Data", userData);
+                return userData;
+
+            } catch (MalformedURLException e) {
+                Log.d("MALFORMED", "EXCEPTION");
+                e.printStackTrace();
+                return null;
+            } catch (IOException e) {
+                Log.d("IO", "EXCEPTION");
+                e.printStackTrace();
+                return null;
+            }
+
+        }
+
+        @Override
+        protected void onPostExecute(String userData) {
+            super.onPostExecute(userData);
+
+            try {
+                JSONObject jobject = new JSONObject(userData);
+                if(jobject.length()==0){
+
+                } else {
+                    String username = jobject.getString("username");
+                    String password = jobject.getString("password");
+                    String accountLevel = jobject.getString("accountLevel");
+                    String latitiude = jobject.getString("latitude");
+                    String longitude = jobject.getString("longitude");
+                    int userID = jobject.getInt("userID");
+
+                    User user = new User(username, userID, "something", password, accountLevel, latitude, longitude);
+                    Log.d("USER", user.getUserName()+", "+user.getId()+", "+user.getPassword());
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
+
+
