@@ -26,6 +26,16 @@ public class User {
         this.longitude = longitude;
     }
 
+    public User(int id, String userName, String password, String email, String accountLevel, String latitude, String longitude) {
+        this.id = id;
+        this.userName = userName;
+        this.password = password;
+        this.email = email;
+        this.accountLevel = accountLevel;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
     public String getLatitude() {
         return latitude;
     }
