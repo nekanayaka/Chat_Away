@@ -25,7 +25,9 @@ public class UserDAO extends SQLiteOpenHelper {
     public static final String COLUMN_BANSTATUS = "banStatus";
     public static final String COLUMN_REQUESTING = "requestingChat";
     public static final String COLUMN_LEVEL = "accountLevel";
-    public static final String COLUMN_COORDINATES = "coordinates";
+    //public static final String COLUMN_COORDINATES = "coordinates";
+    public static final String COLUMN_LATITUDE = "latitude";
+    public static final String COLUMN_LONGITUDE = "longitude";
 
     private static final int DB_VERSION = 1;                 // the version of the database
 
@@ -37,7 +39,8 @@ public class UserDAO extends SQLiteOpenHelper {
             COLUMN_BANSTATUS + " DOUBLE, "+
             COLUMN_REQUESTING + " INTEGER, "+
             COLUMN_LEVEL + " TEXT, "+
-            COLUMN_COORDINATES + " TEXT);";
+            COLUMN_LATITUDE + " DOUBLE, " +
+            COLUMN_LONGITUDE + "DOUBLE);";
 
     private SQLiteDatabase db;
     private Cursor cursor;

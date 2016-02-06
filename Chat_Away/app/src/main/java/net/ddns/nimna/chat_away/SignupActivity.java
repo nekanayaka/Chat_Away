@@ -59,8 +59,10 @@ public class SignupActivity extends AppCompatActivity {
                 }
                 else {
                     String accountLevel = "regular";
-                    String coordinates = "something";
-                    User user = new User(username, 0, email, encryptPassword(password), accountLevel, coordinates);
+                    //String coordinates = "something";
+                    String latitude = "00000000";
+                    String longitude = "00000000";
+                    User user = new User(0, username, encryptPassword(password), email, accountLevel, latitude, longitude);
                     userSignUp(user);
                     Toast.makeText(SignupActivity.this, "Profile created successfully!", Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(SignupActivity.this, SigninActivity.class);
