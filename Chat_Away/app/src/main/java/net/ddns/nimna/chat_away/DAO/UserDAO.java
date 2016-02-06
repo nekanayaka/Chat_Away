@@ -16,7 +16,7 @@ import net.ddns.nimna.chat_away.Model.User;
 
 public class UserDAO extends SQLiteOpenHelper {
 
-    public static final String DATABASE_NAME = "ChatAway";          // <=== Set to 'null' for an in-memory database
+    public static final String DATABASE_NAME = "";          // <=== Set to 'null' for an in-memory database
     public static final String TABLE_NAME = "User";
     public static final String COLUMN_ID = "_id"; // <=== This is required
     public static final String COLUMN_USERID = "userId";
