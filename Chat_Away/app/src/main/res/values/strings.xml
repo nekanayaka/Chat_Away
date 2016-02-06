@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Chat Away</string>
     <string name="title_activity_messaging">MessagingActivity</string>
+    <string name="login_activity_label">Sinch Messaging Tutorial</string>
+    <string name="username">USERNAME</string>
+    <string name="password">PASSWORD</string>
+    <string name="message_elipses">Message...</string>
 </resources>
