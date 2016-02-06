@@ -13,7 +13,7 @@
 		$longitude  = $mysqli->real_escape_string($_POST["longitude"]);
 		$latitude = $mysqli->real_escape_string($_POST["latitude"]);
 		
-		$sql_query = "INSERT INTO `user`(`username`, `email`, `password`, `accountLevel`, `longitude`, `latitude`) VALUES ('$username', '$email', '$password', '$coordinates', '$accountLevel', '$longitude', '$latitude')";
+		$sql_query = "INSERT INTO `user`(`username`, `email`, `password`, `accountLevel`, `longitude`, `latitude`) VALUES ('$username', '$email', '$password', '$accountLevel', '$longitude', '$latitude')";
 		$mysqli->query($sql_query);
 	 
 	
