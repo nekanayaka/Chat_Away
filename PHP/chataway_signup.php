@@ -9,9 +9,11 @@
 		$username = $mysqli->real_escape_string($_POST["username"]);
 		$password = $mysqli->real_escape_string($_POST["password"]);
 		$email = $mysqli->real_escape_string($_POST["email"]);
-		$coordinates = $mysqli->real_escape_string($_POST["coordinates"]);
 		$accountLevel = $mysqli->real_escape_string($_POST["userStatus"]);
-		$sql_query = "INSERT INTO `user`(`username`, `email`, `password`, `coordinates`, `accountLevel`) VALUES ('$username', '$email', '$password', '$coordinates', '$accountLevel')";
+		$longitude  = $mysqli->real_escape_string($_POST["longitude"]);
+		$latitude = $mysqli->real_escape_string($_POST["latitude"]);
+		
+		$sql_query = "INSERT INTO `user`(`username`, `email`, `password`, `accountLevel`, `longitude`, `latitude`) VALUES ('$username', '$email', '$password', '$coordinates', '$accountLevel', '$longitude', '$latitude')";
 		$mysqli->query($sql_query);
 	 
 	

@@ -6,6 +6,7 @@ public class User {
 
     private int id;
     private String userName;
+    private String password;
     private String email;
     private String password;
     //private double banStatus;
@@ -19,6 +20,7 @@ public class User {
     public User(int id, String userName, String email, String accountLevel, String latitude, String longitude) {
         this.id = id;
         this.userName = userName;
+        this.password = password;
         this.email = email;
         this.accountLevel = accountLevel;
         this.latitude = latitude;
@@ -73,6 +75,14 @@ public class User {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public int getId() {

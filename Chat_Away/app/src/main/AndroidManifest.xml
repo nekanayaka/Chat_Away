@@ -3,6 +3,7 @@
     package="net.ddns.nimna.chat_away">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -20,7 +21,11 @@
         <activity android:name=".SignupActivity" />
         <activity android:name=".SigninActivity" />
         <activity android:name=".ProfileActivity" />
-
+        <activity
+            android:name=".MessagingActivity"
+            android:label="@string/title_activity_messaging"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <service android:name=".MessageService"></service>
     </application>
 
 </manifest>

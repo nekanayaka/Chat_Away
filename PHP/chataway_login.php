@@ -21,7 +21,8 @@
 			 $user['email'] = $row["email"];
 			 $user['banStatus'] = $row["banStatus"];
 			 $user['accountLevel'] = $row["accountLevel"];
-			 $user['coordinates'] = $row["coordinates"];
+			 $user['longitude'] = $row["longitude"];
+			 $user['latitude'] = $row["latitude"];
 		 }
 
 		 if(isset($user['userID'])){
