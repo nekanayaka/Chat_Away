@@ -32,21 +32,21 @@ public class MessagingActivity extends Activity {
         Intent intent = getIntent();
         recipientId = intent.getStringExtra("RECIPIENT_ID");
         //currentUserId = ParseUser.getCurrentUser().getObjectId();
-//        messageBodyField = (EditText) findViewById(R.id.messageBodyField);
-//        //listen for a click on the send button
-//        findViewById(R.id.sendButton).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                //send the message!
-//                messageBody = messageBodyField.getText().toString();
-//                if (messageBody.isEmpty()) {
-//                    Toast.makeText(getApplicationContext(), "Please enter a message", Toast.LENGTH_LONG).show();
-//                    return;
-//                }
-//                messageService.sendMessage(recipientId, messageBody);
-//                messageBodyField.setText("");
-//            }
-//        });
+        messageBodyField = (EditText) findViewById(R.id.messageBodyField);
+        //listen for a click on the send button
+        findViewById(R.id.sendButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //send the message!
+                messageBody = messageBodyField.getText().toString();
+                if (messageBody.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Please enter a message", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                messageService.sendMessage(recipientId, messageBody);
+                messageBodyField.setText("");
+            }
+        });
     }
     //unbind the service when the activity is destroyed
     @Override
