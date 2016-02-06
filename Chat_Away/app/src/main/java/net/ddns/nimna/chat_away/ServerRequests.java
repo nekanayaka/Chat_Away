@@ -160,7 +160,7 @@ public class ServerRequests {
 
             try {
                 JSONObject jobject = new JSONObject(userData);
-                if(jobject.length()==0){
+                if(jobject.length() == 0) {
 
                 } else {
                     String username = jobject.getString("username");
@@ -170,6 +170,8 @@ public class ServerRequests {
                     int userID = jobject.getInt("userID");
 
                     User user = new User(username, userID, "something", password, accountLevel, coordinates);
+                    SigninActivity signinInstance = new SigninActivity();
+                    signinInstance.setUser(user);
                     Log.d("USER", user.getUserName()+", "+user.getId()+", "+user.getPassword());
                 }
             } catch (JSONException e) {

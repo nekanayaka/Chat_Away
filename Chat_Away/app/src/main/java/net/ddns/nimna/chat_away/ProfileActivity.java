@@ -11,7 +11,6 @@ import android.widget.TextView;
  */
 public class ProfileActivity extends AppCompatActivity {
     private TextView tvUsernameProfile;
-    private String username;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,9 +19,5 @@ public class ProfileActivity extends AppCompatActivity {
         tvUsernameProfile = (TextView)findViewById(R.id.tvUsernameProfile);
         //Intent intent = getIntent();
         tvUsernameProfile.setText(extra.getString("username") + "!");
-    }
-    public void setUsername(String username) {
-        this.username = username;
-
     }
 }

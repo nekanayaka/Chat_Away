@@ -6,7 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.Toast;
+
+import net.ddns.nimna.chat_away.Model.User;
 
 /**
  * @author Nimna Ekanayaka
@@ -14,14 +16,14 @@ import android.widget.TextView;
  */
 public class SigninActivity extends AppCompatActivity {
 
-    private TextView tvSignup;
-    private Button bttnSignup;
     private Button login;
     private EditText etUsername;
     private EditText etPassword;
 
     private String username;
     private String password;
+
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,10 +57,26 @@ public class SigninActivity extends AppCompatActivity {
     public void userSignIn(){
         ServerRequests sr = new ServerRequests();
         sr.fetchUserDataInBackground(this.username, this.password);
+        validateUser(user);
     }
 
     public void bttnSignup_Click(View view) {
         Intent intent = new Intent(SigninActivity.this, SignupActivity.class);
         startActivity(intent);
+    }
+
+    public void validateUser(User user) {
+        if(username.equals(user.getUserName())) {
+            Intent intent = new Intent(SigninActivity.this, ProfileActivity.class);
+            intent.putExtra("username", username);
+            startActivity(intent);
+        }
+        else {
+            Toast.makeText(getApplicationContext(), "Username or Password is wrong!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
