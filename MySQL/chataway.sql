@@ -3,21 +3,22 @@ CREATE DATABASE IF NOT EXISTS chataway;
 USE chataway;
 
 CREATE TABLE user(
-        userID INT NOT NULL PRIMARY KEY,
+        userID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         username VARCHAR(20) NOT NULL,
     	password VARCHAR(100) NOT NULL,
     	email VARCHAR(30) NOT NULL,
     	banStatus decimal,
     	requestingChat boolean,
     	accountLevel VARCHAR(10) NOT NULL,
-    	coordinates VARCHAR(50) NOT NULL
+    	longitude DOUBLE NOT NULL,
+		latitude DOUBLE NOT NULL
      )
      ENGINE=INNODB;
 
 
 
  CREATE TABLE message(
-     	messageID INT NOT NULL PRIMARY KEY,
+     	messageID INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
         senderID INT NOT NULL,
         receiverID INT NOT NULL,
         createdAt DATETIME NOT NULL,
@@ -29,7 +30,7 @@ CREATE TABLE user(
 
 
 CREATE TABLE groupchat(
-        groupID INT NOT NULL,
+        groupID INT NOT NULL AUTO_INCREMENT,
         userID INT NOT NULL,
     	baseCoordinates VARCHAR(50) NOT NULL,
         PRIMARY KEY (groupID, userID),
