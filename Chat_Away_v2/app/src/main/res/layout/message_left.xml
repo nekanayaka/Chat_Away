@@ -39,9 +39,9 @@
                 android:layout_below="@+id/txtSender"
                 android:layout_alignParentLeft="true"
                 android:padding="12dp"
-
+                android:background="@drawable/grey_bubble"
                 >
-            <!--android:background="@drawable/grey_bubble"-->
+
             <TextView
                     android:id="@+id/txtMessage"
                     android:paddingLeft="12dp"

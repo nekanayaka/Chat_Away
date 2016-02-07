@@ -29,7 +29,7 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ProfileActivity.this, MessagingActivity.class);
-                intent.putExtra("RECIPIENT_ID", "Bill");
+                intent.putExtra("RECIPIENT_ID", "1");
                 startActivity(intent);
             }
         });
