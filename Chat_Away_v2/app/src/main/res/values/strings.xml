@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Chat_Away_v2</string>
+    <string name="app_name">Chat Away</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_messaging">MessagingActivity</string>
     <string name="login_activity_label">Sinch Messaging Tutorial</string>

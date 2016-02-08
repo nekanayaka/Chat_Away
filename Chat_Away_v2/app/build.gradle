@@ -25,4 +25,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:design:23.1.1'
     compile files('C:/Users/Chris/Documents/cis2261_project/Chat_Away_v2/libs/sinch-android-rtc-3.9.2.jar')
+    compile files('C:/Users/jmaceachern5567/Documents/cis2261_project/Chat_Away_v2/libs/sinch-android-rtc-3.9.2.jar')
 }
