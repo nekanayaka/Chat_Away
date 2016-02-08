@@ -33,8 +33,8 @@ public class ServerRequests {
         new StoreUserDataAsyncTask(user).execute();
     }
 
-    public void fetchUserDataInBackground(String username, String password){
-        new FetchUserDataAsyncTask(username, password).execute();
+    public void fetchUserDataInBackground(String username, String password, AsyncResponse response){
+        new FetchUserDataAsyncTask(username, password, response).execute();
     }
 
     public class StoreUserDataAsyncTask extends AsyncTask<Void,Void,Void>{
@@ -103,13 +103,15 @@ public class ServerRequests {
 
         String username;
         String password;
+        AsyncResponse response;
 
         String fileName = "chataway_login.php";
 
-        public FetchUserDataAsyncTask(String username, String password){
+        public FetchUserDataAsyncTask(String username, String password, AsyncResponse response){
 
             this.username = username;
             this.password = password;
+            this.response = response;
         }
         @Override
         protected String doInBackground(Void... params) {
@@ -175,6 +177,7 @@ public class ServerRequests {
                     int userID = jobject.getInt("userID");
 
                     User user = new User(userID, username, email, accountLevel, latitude, longitude);
+                    response.done(user);
                     Log.d("USER", user.getUserName()+", "+user.getId());
                 }
             } catch (JSONException e) {

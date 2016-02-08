@@ -39,7 +39,7 @@ public class MessagingActivity extends Activity {
         //get recipientId from the intent
         Intent intent = getIntent();
         //recipientId = intent.getStringExtra("RECIPIENT_ID");
-        recipientId = "7";
+        recipientId = "nimna";
         currentUserId = "chris";
         messageBodyField = (EditText) findViewById(R.id.messageBodyField);
         messagesList = (ListView) findViewById(R.id.listMessages);

@@ -3,10 +3,13 @@ package net.ddns.nimna.chat_away_v2;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import net.ddns.nimna.chat_away_v2.Model.User;
 
 /**
  * @author Nimna Ekanayaka
@@ -22,6 +25,8 @@ public class SigninActivity extends AppCompatActivity {
 
     private String username;
     private String password;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,17 +53,23 @@ public class SigninActivity extends AppCompatActivity {
                 username = etUsername.getText().toString();
                 password = etPassword.getText().toString();
                 userSignIn();
-                Intent i = new Intent(SigninActivity.this, ProfileActivity.class);
-                final Intent serviceIntent = new Intent(getApplicationContext(), MessageService.class);
-                startActivity(i);
-                startService(serviceIntent);
+
             }
         });
     }
 
     public void userSignIn(){
         ServerRequests sr = new ServerRequests();
-        sr.fetchUserDataInBackground(this.username, this.password);
+        sr.fetchUserDataInBackground(this.username, this.password, new AsyncResponse() {
+            @Override
+            public void done(User user) {
+                Intent i = new Intent(SigninActivity.this, ProfileActivity.class);
+                final Intent serviceIntent = new Intent(getApplicationContext(), MessageService.class);
+                i.putExtra("username",user.getUserName());
+                startActivity(i);
+                startService(serviceIntent);
+            }
+        });
     }
 
     public void bttnSignup_Click(View view) {

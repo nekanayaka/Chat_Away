@@ -38,4 +38,5 @@ dependencies {
     compile 'com.android.support:design:23.1.1'
     compile files('C:/Users/nekanayaka/cis2261_project/Chat_Away/libs/sinch-android-rtc-3.7.1.jar')
     compile files('C:/FinalProject/Chat_Away/libs/sinch-android-rtc-3.7.1.jar')
+    compile files('C:/Users/jmaceachern5567/Documents/cis2261_project/Chat_Away/libs/sinch-android-rtc-3.7.1.jar')
 }

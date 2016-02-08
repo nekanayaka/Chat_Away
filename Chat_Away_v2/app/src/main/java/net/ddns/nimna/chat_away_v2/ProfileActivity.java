@@ -20,10 +20,11 @@ public class ProfileActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-//        Bundle extra = getIntent().getExtras();
-//        tvUsernameProfile = (TextView)findViewById(R.id.tvUsernameProfile);
+        Bundle extra = getIntent().getExtras();
+        String username = extra.getString("username");
+        tvUsernameProfile = (TextView)findViewById(R.id.tvUsernameProfile);
         //Intent intent = getIntent();
-//        tvUsernameProfile.setText(extra.getString("username") + "!");
+        tvUsernameProfile.setText(username);
         btnChat = (Button)findViewById(R.id.btnChat);
         btnChat.setOnClickListener(new View.OnClickListener() {
             @Override

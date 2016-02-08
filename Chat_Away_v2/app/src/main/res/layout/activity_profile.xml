@@ -29,5 +29,7 @@
         android:layout_alignRight="@+id/tvUsernameProfile"
         android:layout_alignEnd="@+id/tvUsernameProfile"
         android:layout_alignParentTop="true"
-        android:layout_alignBottom="@+id/textView" />
+        android:layout_alignBottom="@+id/textView"
+        android:layout_below="@+id/tvUsernameProfile"/>
+
 </RelativeLayout>
