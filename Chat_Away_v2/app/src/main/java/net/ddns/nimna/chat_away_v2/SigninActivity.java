@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import net.ddns.nimna.chat_away_v2.Model.User;
 
@@ -63,11 +64,16 @@ public class SigninActivity extends AppCompatActivity {
         sr.fetchUserDataInBackground(this.username, this.password, new AsyncResponse() {
             @Override
             public void done(User user) {
-                Intent i = new Intent(SigninActivity.this, ProfileActivity.class);
-                final Intent serviceIntent = new Intent(getApplicationContext(), MessageService.class);
-                i.putExtra("username",user.getUserName());
-                startActivity(i);
-                startService(serviceIntent);
+                if(username.equals(user.getUserName())) {
+                    Intent i = new Intent(SigninActivity.this, ProfileActivity.class);
+                    final Intent serviceIntent = new Intent(getApplicationContext(), MessageService.class);
+                    i.putExtra("username", user.getUserName());
+                    startActivity(i);
+                    startService(serviceIntent);
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "Username or Password is wrong!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
