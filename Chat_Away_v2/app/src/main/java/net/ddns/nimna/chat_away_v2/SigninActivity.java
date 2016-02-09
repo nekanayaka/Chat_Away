@@ -68,6 +68,8 @@ public class SigninActivity extends AppCompatActivity {
                     Intent i = new Intent(SigninActivity.this, ProfileActivity.class);
                     final Intent serviceIntent = new Intent(getApplicationContext(), MessageService.class);
                     i.putExtra("username", user.getUserName());
+                    i.putExtra("email", user.getEmail());
+                    i.putExtra("accountLevel", user.getAccountLevel());
                     serviceIntent.putExtra("username", user.getUserName());
                     startActivity(i);
                     startService(serviceIntent);

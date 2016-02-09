@@ -19,6 +19,9 @@ import android.widget.Toast;
 public class ProfileActivity extends AppCompatActivity {
 
     private TextView tvUsernameProfile;
+    private TextView tvUsernameProfileAccount;
+    private TextView tvEmailProfile;
+    private TextView tvAccountLevelProfile;
     private String username;
     private Button btnChat;
     private ProgressDialog mProgressDialog;
@@ -30,9 +33,17 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         Bundle extra = getIntent().getExtras();
         username = extra.getString("username");
+        String email = extra.getString("email");
+        String accountLevel = extra.getString("accountLevel");
         tvUsernameProfile = (TextView)findViewById(R.id.tvUsernameProfile);
+        tvUsernameProfileAccount = (TextView)findViewById(R.id.tvUsernameProfileAccount);
+        tvEmailProfile = (TextView)findViewById(R.id.tvEmailProfile);
+        tvAccountLevelProfile = (TextView)findViewById(R.id.tvAccountLevelProfile);
         //Intent intent = getIntent();
         tvUsernameProfile.setText(username + "!");
+        tvUsernameProfileAccount.setText(username);
+        tvEmailProfile.setText(email);
+        tvAccountLevelProfile.setText(accountLevel);
         btnChat = (Button)findViewById(R.id.btnChat);
         btnChat.setOnClickListener(new View.OnClickListener() {
             @Override
