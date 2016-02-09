@@ -3,7 +3,9 @@ package net.ddns.nimna.chat_away_v2;
 import android.app.Service;
 import android.content.Intent;
 import android.os.Binder;
+import android.os.Bundle;
 import android.os.IBinder;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
 import com.sinch.android.rtc.ClientRegistration;
@@ -27,15 +29,22 @@ public class MessageService extends Service implements SinchClientListener {
     private SinchClient sinchClient = null;
     private MessageClient messageClient = null;
     private String currentUserId;
+    private Intent broadcastIntent = new Intent("net.ddns.nimna.chat_away_v2.ProfileActivity");
+    private LocalBroadcastManager broadCaster;
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         //get the current user id from Parse
-        //currentUserId = ParseUser.getCurrentUser().getObjectId();
-        currentUserId = "chris";
+
+
+        currentUserId = intent.getStringExtra("username");
+
         if (currentUserId != null && !isSinchClientStarted()) {
             startSinchClient(currentUserId);
         }
         Log.d("onStartCommand", "onStartCommand");
+
+        broadCaster = LocalBroadcastManager.getInstance(this);
+
         return super.onStartCommand(intent, flags, startId);
     }
     public void startSinchClient(String username) {
@@ -62,11 +71,16 @@ public class MessageService extends Service implements SinchClientListener {
     //The next 5 methods are for the sinch client listener
     @Override
     public void onClientFailed(SinchClient client, SinchError error) {
+        broadcastIntent.putExtra("success", false);
+        broadCaster.sendBroadcast(broadcastIntent);
         sinchClient = null;
     }
     @Override
     public void onClientStarted(SinchClient client) {
         Log.d("onClientStarted", "onClientStarted");
+        broadcastIntent.putExtra("success", true);
+        broadCaster.sendBroadcast(broadcastIntent);
+
         client.startListeningOnActiveConnection();
         messageClient = client.getMessageClient();
     }

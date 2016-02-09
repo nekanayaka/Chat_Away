@@ -8,7 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import net.ddns.nimna.chat_away_v2.DAO.UserDAO;
 import net.ddns.nimna.chat_away_v2.Model.User;
 
 /**
@@ -26,7 +28,7 @@ public class SigninActivity extends AppCompatActivity {
     private String username;
     private String password;
 
-
+    private UserDAO db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,11 +65,19 @@ public class SigninActivity extends AppCompatActivity {
         sr.fetchUserDataInBackground(this.username, this.password, new AsyncResponse() {
             @Override
             public void done(User user) {
-                Intent i = new Intent(SigninActivity.this, ProfileActivity.class);
-                final Intent serviceIntent = new Intent(getApplicationContext(), MessageService.class);
-                i.putExtra("username",user.getUserName());
-                startActivity(i);
-                startService(serviceIntent);
+                if(user==null){
+                    Toast.makeText(SigninActivity.this, "Username or password is incorrect", Toast.LENGTH_LONG).show();
+                    etUsername.setText("");
+                    etPassword.setText("");
+                } else {
+                    Intent i = new Intent(SigninActivity.this, ProfileActivity.class);
+                    final Intent serviceIntent = new Intent(getApplicationContext(), MessageService.class);
+                    i.putExtra("username",user.getUserName());
+                    serviceIntent.putExtra("username",user.getUserName());
+                    startActivity(i);
+                    startService(serviceIntent);
+                }
+
             }
         });
     }

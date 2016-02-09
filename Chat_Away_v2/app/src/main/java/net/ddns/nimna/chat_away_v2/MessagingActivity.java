@@ -31,6 +31,7 @@ public class MessagingActivity extends Activity {
     private ServiceConnection serviceConnection = new MyServiceConnection();
     private ListView messagesList;
     private MessageAdapter messageAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +41,10 @@ public class MessagingActivity extends Activity {
         Intent intent = getIntent();
         //recipientId = intent.getStringExtra("RECIPIENT_ID");
         recipientId = "nimna";
-        currentUserId = "chris";
+
+        Bundle extra = getIntent().getExtras();
+        currentUserId = extra.getString("username");
+        Log.d("USER_MESSAGE_ACTIVITY", "-->"+currentUserId);
         messageBodyField = (EditText) findViewById(R.id.messageBodyField);
         messagesList = (ListView) findViewById(R.id.listMessages);
         messageAdapter = new MessageAdapter(this);
