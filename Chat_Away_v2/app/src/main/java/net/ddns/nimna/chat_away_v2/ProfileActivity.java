@@ -32,7 +32,7 @@ public class ProfileActivity extends AppCompatActivity {
         username = extra.getString("username");
         tvUsernameProfile = (TextView)findViewById(R.id.tvUsernameProfile);
         //Intent intent = getIntent();
-        tvUsernameProfile.setText(username);
+        tvUsernameProfile.setText(username + "!");
         btnChat = (Button)findViewById(R.id.btnChat);
         btnChat.setOnClickListener(new View.OnClickListener() {
             @Override
