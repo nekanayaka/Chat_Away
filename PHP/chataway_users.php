@@ -4,7 +4,7 @@
 
 $mysqli = new mysqli("localhost","nekanaya_CAadmin","opensesame","nekanaya_chat_away");
 
-if(isset($_POST["latitude"])&&isset($_POST["longitude"])){
+if(isset($_POST["latitude"])&&isset($_POST["longitude"])&&isset($_POST["userId"])){
 
     $lat = $mysqli->real_escape_string($_POST["latitude"]);
     $long = $mysqli->real_escape_string($_POST["longitude"]);
@@ -33,15 +33,29 @@ if(isset($_POST["latitude"])&&isset($_POST["longitude"])){
     if(isset($finalUser['userID'])){
 
         echo json_encode($finalUser);
+        $query = "UPDATE users SET requestingChat = 0 WHERE userId = ".$finalUser['userID'];
+
+        $result = $mysqli->query($query);
+
+        echo $result;
+
+        $query = "UPDATE users SET requestingChat = 0 WHERE userId = ".$_POST['userID'];
+
+        $result = $mysqli->query($query);
+
+        echo $result;
 
     } else {
         echo "not found";
+        $query = "UPDATE users SET requestingChat = 1 WHERE userId = ".$_POST['userID'];
+
+        $result = $mysqli->query($query);
+
+        echo $result;
     }
 } else {
     echo "Not Set";
 }
-
-
 
 $mysqli->close();
 ?>
