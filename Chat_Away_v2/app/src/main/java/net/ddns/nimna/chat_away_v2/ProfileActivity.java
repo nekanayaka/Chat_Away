@@ -56,6 +56,7 @@ public class ProfileActivity extends AppCompatActivity {
     private MessageService.MessageServiceInterface messageService;
     private LocationManager locationManager;
     private Criteria criteria;
+    private MessageClientListener messageClientListener;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -103,13 +104,13 @@ public class ProfileActivity extends AppCompatActivity {
 //            }
 //        }
         // Create an instance of GoogleAPIClient.
-        if (mGoogleApiClient == null) {
-            mGoogleApiClient = new GoogleApiClient.Builder(this)
-                    .addConnectionCallbacks(this)
-                    .addOnConnectionFailedListener(this)
-                    .addApi(LocationServices.API)
-                    .build();
-        }
+//        if (mGoogleApiClient == null) {
+//            mGoogleApiClient = new GoogleApiClient.Builder(this)
+//                    .addConnectionCallbacks(this)
+//                    .addOnConnectionFailedListener(this)
+//                    .addApi(LocationServices.API)
+//                    .build();
+//        }
 
 
 
@@ -175,6 +176,7 @@ public class ProfileActivity extends AppCompatActivity {
                     Intent intent = new Intent(ProfileActivity.this, MessagingActivity.class);
                     intent.putExtra("username", username);
                     intent.putExtra("RECIPIENT_ID", user.getUserName());
+                    messageService.removeMessageClientListener(messageClientListener);
                     startActivity(intent);
                     Log.d("USER_FOUND", "-->"+user.getUserName());
                 }
@@ -188,7 +190,7 @@ public class ProfileActivity extends AppCompatActivity {
         public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
             Log.d("SERVICE_CONNECTED", "Service is connected");
             messageService = (MessageService.MessageServiceInterface) iBinder;
-            MessageClientListener messageClientListener = new MyMessageClientListener();
+            messageClientListener = new MyMessageClientListener();
             messageService.addMessageClientListener(messageClientListener);
         }
         @Override
@@ -218,7 +220,9 @@ public class ProfileActivity extends AppCompatActivity {
             Intent intent = new Intent(ProfileActivity.this, MessagingActivity.class);
             intent.putExtra("username", username);
             intent.putExtra("RECIPIENT_ID", message.getSenderId());
+            messageService.removeMessageClientListener(messageClientListener);
             startActivity(intent);
+
 
         }
         @Override
