@@ -48,6 +48,10 @@ public class ServerRequests {
         new FetchUserDataAsyncTask(username, password, response).execute();
     }
 
+    public void fetchChatUsersDataInBackground(String lon, String lat, int userID, AsyncResponse response){
+        new FetchChatUsersDataAsyncTask(lon, lat, userID, response).execute();
+    }
+
     /**
      * This method will be used to send data to the server and get a response from the server
      * @param data
@@ -226,20 +230,26 @@ public class ServerRequests {
 
         String latitude;
         String longitude;
+        int userID;
+        AsyncResponse response;
 
         String fileName = "chataway_users.php";
 
-        public FetchChatUsersDataAsyncTask(String lat, String lon){
+        public FetchChatUsersDataAsyncTask(String lat, String lon, int userID, AsyncResponse response){
 
             this.latitude = lat;
             this.longitude = lon;
+            this.userID = userID;
+            this.response = response;
         }
+
         @Override
         protected String doInBackground(Void... params) {
             try {
 
                 String data  = URLEncoder.encode("latitude", "UTF-8") + "=" + URLEncoder.encode(latitude, "UTF-8");
                 data += "&" + URLEncoder.encode("longitude", "UTF-8") + "=" + URLEncoder.encode(longitude, "UTF-8");
+                data += "&" + URLEncoder.encode("userID", "UTF-8") + "=" + URLEncoder.encode(userID+"", "UTF-8");
 
                 String userData = getServerResponse(data, fileName);
 
@@ -258,24 +268,29 @@ public class ServerRequests {
             super.onPostExecute(userData);
 
             try {
-                JSONObject jobject = new JSONObject(userData);
-                if(jobject.length()==0){
-
+                if(userData.equalsIgnoreCase("not found ")){
+                    response.done(null);
                 } else {
-                    String username = jobject.getString("username");
-                    String password = jobject.getString("password");
-                    String accountLevel = jobject.getString("accountLevel");
-                    String email = jobject.getString("email");
-                    String latitude = jobject.getString("latitude");
-                    String longitude = jobject.getString("longitude");
-                    int userID = jobject.getInt("userID");
+                    JSONObject jobject = new JSONObject(userData);
+                    if(jobject.length()==0){
+                        response.done(null);
+                    } else {
+                        String username = jobject.getString("username");
+                        //String password = jobject.getString("password");
+                        String accountLevel = jobject.getString("accountLevel");
+                        String email = jobject.getString("email");
+                        String latitude = jobject.getString("latitude");
+                        String longitude = jobject.getString("longitude");
+                        int userID = jobject.getInt("userID");
 
-                    User user = new User(userID, username, email, accountLevel, latitude, longitude);
-                    Log.d("USER", user.getUserName()+", "+user.getId());
-                    UserDAO db = new UserDAO(null, null);
-                    db.insertUser(user);
-
+                        User user = new User(userID, username, email, accountLevel, latitude, longitude);
+                        Log.d("USER", user.getUserName()+", "+user.getId());
+                        //UserDAO db = new UserDAO(null, null);
+                        //db.insertUser(user);
+                        response.done(user);
+                    }
                 }
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }

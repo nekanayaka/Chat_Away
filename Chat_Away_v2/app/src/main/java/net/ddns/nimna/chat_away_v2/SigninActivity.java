@@ -70,6 +70,7 @@ public class SigninActivity extends AppCompatActivity {
                     i.putExtra("username", user.getUserName());
                     i.putExtra("email", user.getEmail());
                     i.putExtra("accountLevel", user.getAccountLevel());
+                    i.putExtra("userID", user.getId()+"");
                     serviceIntent.putExtra("username", user.getUserName());
                     startActivity(i);
                     startService(serviceIntent);

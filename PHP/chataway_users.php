@@ -4,13 +4,22 @@
 
 $mysqli = new mysqli("localhost","nekanaya_CAadmin","opensesame","nekanaya_chat_away");
 
-if(isset($_POST["latitude"])&&isset($_POST["longitude"])&&isset($_POST["userId"])){
+if(isset($_POST["latitude"])&&isset($_POST["longitude"])&&isset($_POST["userID"])){
 
     $lat = $mysqli->real_escape_string($_POST["latitude"]);
     $long = $mysqli->real_escape_string($_POST["longitude"]);
+	$userID = $mysqli->real_escape_string($_POST["userID"]);
+	
+	$maxLat = $lat+$distance;
+	$minLat = $lat-$distance;
+	
+	$maxLong = $long+$distance;
+	$minLong = $long-$distance;
 
-    $query = "SELECT * FROM user WHERE lat<='".$lat-$distance."' AND lat>='".$lat+$distance."'' AND long<='".$long-$distance."' AND long>='".$long+$distance."' AND requestingChat='1' AND banStatus='0'";
+    $query = "SELECT * FROM user WHERE latitude<= '$maxLat' AND latitude>='$minLat' AND longitude<='$maxLong' AND longitude>='$minLong' AND requestingChat='1' AND banStatus='0' AND userID != '$userID'";
 
+	
+	
     $result = $mysqli->query($query);
 
     $user = array(array());
@@ -28,30 +37,30 @@ if(isset($_POST["latitude"])&&isset($_POST["longitude"])&&isset($_POST["userId"]
         $counter++;
     }
 
-    $finalUser = $users[rand(0, count($user)-1)];
+    $finalUser = $user[rand(0, count($user)-1)];
 
     if(isset($finalUser['userID'])){
 
+		$finalUserID = $finalUser['userID'];
         echo json_encode($finalUser);
-        $query = "UPDATE users SET requestingChat = 0 WHERE userId = ".$finalUser['userID'];
+        $query = "UPDATE user SET requestingChat = 0 WHERE userID = '$finalUserID'";
 
         $result = $mysqli->query($query);
 
-        echo $result;
-
-        $query = "UPDATE users SET requestingChat = 0 WHERE userId = ".$_POST['userID'];
+        $query = "UPDATE user SET requestingChat = 0 WHERE userID = '$userID'";
 
         $result = $mysqli->query($query);
 
-        echo $result;
+        
 
     } else {
-        echo "not found";
-        $query = "UPDATE users SET requestingChat = 1 WHERE userId = ".$_POST['userID'];
+        
+		
+        $query = "UPDATE user SET requestingChat = '1' WHERE userID = '$userID'";
 
         $result = $mysqli->query($query);
 
-        echo $result;
+        echo "not found";
     }
 } else {
     echo "Not Set";
