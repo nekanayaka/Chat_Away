@@ -130,6 +130,8 @@ public class ServerRequests {
                 data += "&" + URLEncoder.encode("latitude", "UTF-8") + "=" + URLEncoder.encode(user.getLatitude(), "UTF-8");
                 data += "&" + URLEncoder.encode("longitude", "UTF-8") + "=" + URLEncoder.encode(user.getLongitude(), "UTF-8");
                 data += "&" + URLEncoder.encode("accountLevel", "UTF-8") + "=" + URLEncoder.encode(user.getAccountLevel(), "UTF-8");
+                data += "&" + URLEncoder.encode("banStatus", "UTF-8") + "=" + URLEncoder.encode(user.getBanStatus(), "UTF-8");
+                data += "&" + URLEncoder.encode("requestingChat", "UTF-8") + "=" + URLEncoder.encode(user.getRequestingChat(), "UTF-8");
 
             }catch (UnsupportedEncodingException e){
                 e.printStackTrace();

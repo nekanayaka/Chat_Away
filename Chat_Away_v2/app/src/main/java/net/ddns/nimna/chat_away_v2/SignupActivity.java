@@ -53,14 +53,18 @@ public class SignupActivity extends AppCompatActivity {
                 Log.d("PASSWORD1",password);
                 Log.d("PASSWORD2",password2);
                 if (!password.equals(password2)) {
-                    Toast.makeText(getApplicationContext(), "Passwords don't match", Toast.LENGTH_SHORT).show(); //getApplication(), getApplicationContext(), SignupActivity.this
+                    Toast.makeText(getApplicationContext(), "Passwords don't match!", Toast.LENGTH_SHORT).show(); //getApplication(), getApplicationContext(), SignupActivity.this
+                }
+                else if(username.equals("") || password.equals("") || email.equals("")) {
+                    Toast.makeText(getApplicationContext(), "Please fill in the information!", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     String accountLevel = "regular";
                     //String coordinates = "something";
-                    String latitude = "00000000";
-                    String longitude = "00000000";
-                    User user = new User(0, username, encryptPassword(password), email, accountLevel, latitude, longitude);
+                    String latitude = "50";
+                    String longitude = "50";
+                    //User user = new User(0, username, encryptPassword(password), email, accountLevel, latitude, longitude);
+                    User user = new User(0, username, email, encryptPassword(password), "0", "0", accountLevel, latitude, longitude);
                     userSignUp(user);
                     Toast.makeText(SignupActivity.this, "Profile created successfully!", Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(SignupActivity.this, SigninActivity.class);

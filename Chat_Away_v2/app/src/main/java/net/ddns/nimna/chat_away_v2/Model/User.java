@@ -8,8 +8,8 @@ public class User {
     private String userName;
     private String email;
     private String password;
-    //private double banStatus;
-    //private int requestingChat;
+    private String banStatus;
+    private String requestingChat;
     private String accountLevel;
     //private String coordinates;
     private String latitude;
@@ -34,6 +34,34 @@ public class User {
         this.accountLevel = accountLevel;
         this.latitude = latitude;
         this.longitude = longitude;
+    }
+
+    public User(int id, String userName, String email, String password, String banStatus, String requestingChat, String accountLevel, String latitude, String longitude) {
+        this.id = id;
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
+        this.banStatus = banStatus;
+        this.requestingChat = requestingChat;
+        this.accountLevel = accountLevel;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
+    public String getBanStatus() {
+        return banStatus;
+    }
+
+    public void setBanStatus(String banStatus) {
+        this.banStatus = banStatus;
+    }
+
+    public String getRequestingChat() {
+        return requestingChat;
+    }
+
+    public void setRequestingChat(String requestingChat) {
+        this.requestingChat = requestingChat;
     }
 
     public String getLatitude() {
