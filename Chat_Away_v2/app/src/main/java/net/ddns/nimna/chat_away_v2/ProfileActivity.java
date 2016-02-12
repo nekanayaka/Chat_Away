@@ -192,10 +192,6 @@ public class ProfileActivity extends AppCompatActivity {
         @Override
         public void onIncomingMessage(MessageClient client, Message message) {
 
-            for(int i=0;i<50;i++){
-                Log.d("CM_Incoming", "-->"+i);
-            }
-            Log.d("RICK", "-->"+"Inside onIncomingMessage, -->"+message.getSenderId());
             Intent intent = new Intent(ProfileActivity.this, MessagingActivity.class);
             intent.putExtra("username", username);
             intent.putExtra("RECIPIENT_ID", message.getSenderId());

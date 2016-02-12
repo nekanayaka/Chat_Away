@@ -37,14 +37,12 @@ public class MessagingActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.messaging);
         bindService(new Intent(this, MessageService.class), serviceConnection, BIND_AUTO_CREATE);
-        //get recipientId from the intent
-        Intent intent = getIntent();
-        //recipientId = intent.getStringExtra("RECIPIENT_ID");
-        recipientId = "nimna";
 
         Bundle extra = getIntent().getExtras();
         currentUserId = extra.getString("username");
+        recipientId = extra.getString("RECIPIENT_ID");
         Log.d("USER_MESSAGE_ACTIVITY", "-->"+currentUserId);
+
         messageBodyField = (EditText) findViewById(R.id.messageBodyField);
         messagesList = (ListView) findViewById(R.id.listMessages);
         messageAdapter = new MessageAdapter(this);
