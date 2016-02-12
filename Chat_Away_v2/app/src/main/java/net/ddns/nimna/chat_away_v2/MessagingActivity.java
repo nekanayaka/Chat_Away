@@ -81,6 +81,7 @@ public class MessagingActivity extends Activity {
             messageService = (MessageService.MessageServiceInterface) iBinder;
             MessageClientListener messageClientListener = new MyMessageClientListener();
             messageService.addMessageClientListener(messageClientListener);
+            messageService.sendMessage(recipientId, "Connected");
         }
         @Override
         public void onServiceDisconnected(ComponentName componentName) {
