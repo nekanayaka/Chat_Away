@@ -24,6 +24,8 @@ import android.widget.Toast;
 import android.location.*;
 
 
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
 import com.sinch.android.rtc.PushPair;
 import com.sinch.android.rtc.messaging.Message;
 import com.sinch.android.rtc.messaging.MessageClient;
@@ -82,11 +84,32 @@ public class ProfileActivity extends AppCompatActivity {
 
 
 
-        //if ( ContextCompat.checkSelfPermission( this, android.Manifest.permission.ACCESS_FINE_LOCATION ) != PackageManager.PERMISSION_GRANTED ) {
+        if ( ContextCompat.checkSelfPermission( this, android.Manifest.permission.ACCESS_COARSE_LOCATION ) != PackageManager.PERMISSION_GRANTED ) {
 
-            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
+            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_COARSE_LOCATION},
                     11);
-        //}
+        }
+//        else{
+//            try{
+//                Log.d("LOCATION", locationManager.getBestProvider(criteria, true)+"");
+//
+//                Location local = locationManager.getLastKnownLocation(locationManager.getProvider("gps").getName());
+//                local.getLatitude();
+//                Log.d("LOCATION", local.getLatitude()+"");
+//            }
+//
+//            catch(NullPointerException e){
+//                Log.d("LOCATION", "null pointer exception");
+//            }
+//        }
+        // Create an instance of GoogleAPIClient.
+        if (mGoogleApiClient == null) {
+            mGoogleApiClient = new GoogleApiClient.Builder(this)
+                    .addConnectionCallbacks(this)
+                    .addOnConnectionFailedListener(this)
+                    .addApi(LocationServices.API)
+                    .build();
+        }
 
 
 
@@ -221,19 +244,18 @@ public class ProfileActivity extends AppCompatActivity {
                     // permission was granted, yay! Do the
                     // contacts-related task you need to do.
                     Log.d("LOCATION", "gps enabled");
+
                     try{
                         Log.d("LOCATION", locationManager.getBestProvider(criteria, true)+"");
+                        //noinspection ResourceType
                         Location local = locationManager.getLastKnownLocation(locationManager.getProvider("gps").getName());
                         local.getLatitude();
                         Log.d("LOCATION", local.getLatitude()+"");
                     }
-                    catch(SecurityException e){
-                        Log.d("LOCATION", "security exception");
-                    }
+
                     catch(NullPointerException e){
                         Log.d("LOCATION", "null pointer exception");
                     }
-
 
 
                 } else {
