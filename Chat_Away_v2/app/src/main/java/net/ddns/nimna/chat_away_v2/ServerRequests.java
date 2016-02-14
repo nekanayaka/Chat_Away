@@ -52,6 +52,10 @@ public class ServerRequests {
         new FetchChatUsersDataAsyncTask(lon, lat, userID, response).execute();
     }
 
+    public void fetchGroupDataInBackground(String lon, String lat, int userID, AsyncResponse response){
+        new FetchGroupDataAsyncTask(lon, lat, userID, response).execute();
+    }
+
     /**
      * This method will be used to send data to the server and get a response from the server
      * @param data
@@ -296,6 +300,59 @@ public class ServerRequests {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    public class FetchGroupDataAsyncTask extends AsyncTask<Void, Void, String>{
+
+        String latitude;
+        String longitude;
+        int userID;
+        AsyncResponse response;
+
+        String fileName = "chataway_groupchat.php";
+
+        public FetchGroupDataAsyncTask(String lat, String lon, int userID, AsyncResponse response){
+
+            this.latitude = lat;
+            this.longitude = lon;
+            this.userID = userID;
+            this.response = response;
+        }
+
+        @Override
+        protected String doInBackground(Void... params) {
+            try {
+
+                String data  = URLEncoder.encode("latitude", "UTF-8") + "=" + URLEncoder.encode(latitude, "UTF-8");
+                data += "&" + URLEncoder.encode("longitude", "UTF-8") + "=" + URLEncoder.encode(longitude, "UTF-8");
+                data += "&" + URLEncoder.encode("userID", "UTF-8") + "=" + URLEncoder.encode(userID+"", "UTF-8");
+
+                String userData = getServerResponse(data, fileName);
+
+                Log.d("User_Data", userData);
+                return userData;
+
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+                return null;
+            }
+
+        }
+
+        @Override
+        protected void onPostExecute(String userData) {
+            super.onPostExecute(userData);
+
+
+            if(userData.equalsIgnoreCase("not found ")){
+                response.done(null);
+            } else {
+                Log.d("GROUP_FOUND", "-->"+userData);
+
+            }
+
+
         }
     }
 }

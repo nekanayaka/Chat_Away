@@ -17,6 +17,8 @@ import com.sinch.android.rtc.messaging.MessageClient;
 import com.sinch.android.rtc.messaging.MessageClientListener;
 import com.sinch.android.rtc.messaging.WritableMessage;
 
+import java.util.List;
+
 /**
  * Created by Chris on 2016-02-05.
  */
@@ -102,6 +104,12 @@ public class MessageService extends Service implements SinchClientListener {
             messageClient.send(message);
         }
     }
+    public void sendGroupMessage(List<String> recipientUserId, String textBody) {
+        if (messageClient != null) {
+            WritableMessage message = new WritableMessage(recipientUserId, textBody);
+            messageClient.send(message);
+        }
+    }
     public void addMessageClientListener(MessageClientListener listener) {
         if (messageClient != null) {
             messageClient.addMessageClientListener(listener);
@@ -121,6 +129,9 @@ public class MessageService extends Service implements SinchClientListener {
     public class MessageServiceInterface extends Binder {
         public void sendMessage(String recipientUserId, String textBody) {
             MessageService.this.sendMessage(recipientUserId, textBody);
+        }
+        public void sendGroupMessage(List<String> recipientUserId, String textBody) {
+            MessageService.this.sendGroupMessage(recipientUserId, textBody);
         }
         public void addMessageClientListener(MessageClientListener listener) {
             MessageService.this.addMessageClientListener(listener);

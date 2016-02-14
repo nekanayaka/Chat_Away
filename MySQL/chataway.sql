@@ -7,6 +7,7 @@ CREATE TABLE user(
         username VARCHAR(20) NOT NULL,
     	password VARCHAR(100) NOT NULL,
     	email VARCHAR(30) NOT NULL,
+		lastLogin DATE,
     	banStatus decimal,
     	requestingChat boolean,
     	accountLevel VARCHAR(10) NOT NULL,
@@ -32,8 +33,18 @@ CREATE TABLE user(
 CREATE TABLE groupchat(
         groupID INT NOT NULL AUTO_INCREMENT,
         userID INT NOT NULL,
-    	baseCoordinates VARCHAR(50) NOT NULL,
-        PRIMARY KEY (groupID, userID),
+    	longitude DOUBLE NOT NULL,
+		latitude DOUBLE NOT NULL,
+        PRIMARY KEY (groupID),
+        FOREIGN KEY (userID) REFERENCES user (userID)
+        
+     )
+     ENGINE=INNODB;
+	 
+CREATE TABLE groupchatRecipients(
+        groupID INT NOT NULL AUTO_INCREMENT,
+        userID INT NOT NULL,
+		PRIMARY KEY (groupID, userID),
         FOREIGN KEY (userID) REFERENCES user (userID)
         
      )
