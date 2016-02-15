@@ -24,6 +24,7 @@ import android.widget.Toast;
 import android.location.*;
 
 
+import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
 import com.sinch.android.rtc.PushPair;
@@ -40,26 +41,29 @@ import java.util.List;
 /**
  * Created by Nimna Ekanayaka on 20/01/2016.
  */
-public class ProfileActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener{
 
+    //views
     private TextView tvUsernameProfile;
     private TextView tvUsernameProfileAccount;
     private TextView tvEmailProfile;
     private TextView tvAccountLevelProfile;
-    private String username;
-    private int userID;
     private Button btnChat;
     private ProgressDialog mProgressDialog;
+    //User info
+    private String username;
+    private int userID;
+    //Services
     private ServerRequests sr;
     private BroadcastReceiver mReceiver = null;
     private ServiceConnection serviceConnection = new MyServiceConnection();
     private MessageService.MessageServiceInterface messageService;
-    private LocationManager locationManager;
-    private Criteria criteria;
     private MessageClientListener messageClientListener;
+    private Location mLastLocation;
+    private GoogleApiClient mGoogleApiClient;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         bindService(new Intent(this, MessageService.class), serviceConnection, BIND_AUTO_CREATE);
@@ -79,44 +83,15 @@ public class ProfileActivity extends AppCompatActivity {
         tvEmailProfile.setText(email);
         tvAccountLevelProfile.setText(accountLevel);
         btnChat = (Button)findViewById(R.id.btnChat);
-
-        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        criteria = new Criteria();
-
-
-
-        if ( ContextCompat.checkSelfPermission( this, android.Manifest.permission.ACCESS_COARSE_LOCATION ) != PackageManager.PERMISSION_GRANTED ) {
-
-            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_COARSE_LOCATION},
-                    11);
-        }
-//        else{
-//            try{
-//                Log.d("LOCATION", locationManager.getBestProvider(criteria, true)+"");
-//
-//                Location local = locationManager.getLastKnownLocation(locationManager.getProvider("gps").getName());
-//                local.getLatitude();
-//                Log.d("LOCATION", local.getLatitude()+"");
-//            }
-//
-//            catch(NullPointerException e){
-//                Log.d("LOCATION", "null pointer exception");
-//            }
-//        }
+        
         // Create an instance of GoogleAPIClient.
-//        if (mGoogleApiClient == null) {
-//            mGoogleApiClient = new GoogleApiClient.Builder(this)
-//                    .addConnectionCallbacks(this)
-//                    .addOnConnectionFailedListener(this)
-//                    .addApi(LocationServices.API)
-//                    .build();
-//        }
-
-
-
-
-
-
+        if (mGoogleApiClient == null) {
+            mGoogleApiClient = new GoogleApiClient.Builder(this)
+                    .addConnectionCallbacks(this)
+                    .addOnConnectionFailedListener(this)
+                    .addApi(LocationServices.API)
+                    .build();
+        }
 
         btnChat.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -157,6 +132,43 @@ public class ProfileActivity extends AppCompatActivity {
                         new IntentFilter(
                                 "net.ddns.nimna.chat_away_v2.ProfileActivity"));
     }
+
+    protected void onStart() {
+        mGoogleApiClient.connect();
+        super.onStart();
+    }
+
+    protected void onStop() {
+        mGoogleApiClient.disconnect();
+        super.onStop();
+    }
+
+    @Override
+    public void onConnected(Bundle bundle) {
+        //REQUIRED check for permissions
+        if ( ContextCompat.checkSelfPermission( this, android.Manifest.permission.ACCESS_COARSE_LOCATION ) != PackageManager.PERMISSION_GRANTED ) {
+
+            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_COARSE_LOCATION},
+                    11);
+        }
+        //Getting location
+        mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
+                mGoogleApiClient);
+        //Checking location and logging
+        if (mLastLocation != null) {
+//            mLatitudeText.setText(String.valueOf(mLastLocation.getLatitude()));
+//            mLongitudeText.setText(String.valueOf(mLastLocation.getLongitude()));
+            Log.d("LOCATION", "Latitude ="+String.valueOf(mLastLocation.getLatitude()));
+            Log.d("LOCATION", "Longtude ="+String.valueOf(mLastLocation.getLongitude()));
+
+        }
+    }
+    //REQUIRED
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
     public void setUsername(String username) {
         this.username = username;
 
@@ -165,7 +177,7 @@ public class ProfileActivity extends AppCompatActivity {
     public void fetchUser(){
 
         sr = new ServerRequests();
-        sr.fetchChatUsersDataInBackground("50", "50", userID, new AsyncResponse(){
+        sr.fetchChatUsersDataInBackground(String.valueOf(mLastLocation.getLongitude()), String.valueOf(mLastLocation.getLatitude()), userID, new AsyncResponse(){
             @Override
             public void done(User user) {
                 if(user==null){
@@ -184,6 +196,12 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+
+    }
+
 
     private class MyServiceConnection implements ServiceConnection {
         @Override
@@ -236,43 +254,43 @@ public class ProfileActivity extends AppCompatActivity {
         public void onShouldSendPushData(MessageClient client, Message message, List<PushPair> pushPairs) {}
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           String permissions[], int[] grantResults) {
-        switch (requestCode) {
-            case 11: {
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-                    // permission was granted, yay! Do the
-                    // contacts-related task you need to do.
-                    Log.d("LOCATION", "gps enabled");
-
-                    try{
-                        Log.d("LOCATION", locationManager.getBestProvider(criteria, true)+"");
-                        //noinspection ResourceType
-                        Location local = locationManager.getLastKnownLocation(locationManager.getProvider("gps").getName());
-                        local.getLatitude();
-                        Log.d("LOCATION", local.getLatitude()+"");
-                    }
-
-                    catch(NullPointerException e){
-                        Log.d("LOCATION", "null pointer exception");
-                    }
-
-
-                } else {
-                    Log.d("LOCATION", "gps not enabled");
-
-                    // permission denied, boo! Disable the
-                    // functionality that depends on this permission.
-                }
-                return;
-            }
-
-            // other 'case' lines to check for other
-            // permissions this app might request
-        }
-    }
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode,
+//                                           String permissions[], int[] grantResults) {
+//        switch (requestCode) {
+//            case 11: {
+//                // If request is cancelled, the result arrays are empty.
+//                if (grantResults.length > 0
+//                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//
+//                    // permission was granted, yay! Do the
+//                    // contacts-related task you need to do.
+//                    Log.d("LOCATION", "gps enabled");
+//
+//                    try{
+//                        Log.d("LOCATION", locationManager.getBestProvider(criteria, true)+"");
+//                        //noinspection ResourceType
+//                        Location local = locationManager.getLastKnownLocation(locationManager.getProvider("gps").getName());
+//                        local.getLatitude();
+//                        Log.d("LOCATION", local.getLatitude()+"");
+//                    }
+//
+//                    catch(NullPointerException e){
+//                        Log.d("LOCATION", "null pointer exception");
+//                    }
+//
+//
+//                } else {
+//                    Log.d("LOCATION", "gps not enabled");
+//
+//                    // permission denied, boo! Disable the
+//                    // functionality that depends on this permission.
+//                }
+//                return;
+//            }
+//
+//            // other 'case' lines to check for other
+//            // permissions this app might request
+//        }
+//    }
 }
