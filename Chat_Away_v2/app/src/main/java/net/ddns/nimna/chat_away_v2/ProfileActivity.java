@@ -220,15 +220,19 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
                             Toast.LENGTH_LONG).show();
 
                 } else {
+                    String[] theRecipients = new String[recipients.size()];
+                    int count = 0;
                     for (String recip : recipients) {
-                        Log.d("Recip", "-->" + recip);
+                        theRecipients[count] = recip;
+                        count++;
                     }
-//                    Intent intent = new Intent(ProfileActivity.this, MessagingActivity.class);
-//                    intent.putExtra("username", username);
-//                    intent.putExtra("RECIPIENT_ID", user.getUserName());
-//                    startActivity(intent);
-//                    Log.d("USER_FOUND", "-->" + user.getUserName());
-//                    unbindService(serviceConnection);
+
+                    Intent intent = new Intent(ProfileActivity.this, GroupMessagingActivity.class);
+                    intent.putExtra("username", username);
+                    intent.putExtra("RECIPIENT_ID", theRecipients);
+
+                    startActivity(intent);
+
                 }
             }
         });
