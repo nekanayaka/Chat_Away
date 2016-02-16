@@ -3,9 +3,13 @@ package net.ddns.nimna.chat_away_v2;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.google.gson.Gson;
+import com.rebtel.repackaged.com.google.gson.reflect.TypeToken;
+
 import net.ddns.nimna.chat_away_v2.DAO.UserDAO;
 import net.ddns.nimna.chat_away_v2.Model.User;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -14,10 +18,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Type;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
+import java.util.List;
 
 /**
  * Created by Chris on 2016-01-22.
@@ -52,7 +58,7 @@ public class ServerRequests {
         new FetchChatUsersDataAsyncTask(lon, lat, userID, response).execute();
     }
 
-    public void fetchGroupDataInBackground(String lon, String lat, int userID, AsyncResponse response){
+    public void fetchGroupDataInBackground(String lon, String lat, int userID, AsyncReturnRecipients response){
         new FetchGroupDataAsyncTask(lon, lat, userID, response).execute();
     }
 
@@ -308,11 +314,11 @@ public class ServerRequests {
         String latitude;
         String longitude;
         int userID;
-        AsyncResponse response;
+        AsyncReturnRecipients response;
 
         String fileName = "chataway_groupchat.php";
 
-        public FetchGroupDataAsyncTask(String lat, String lon, int userID, AsyncResponse response){
+        public FetchGroupDataAsyncTask(String lat, String lon, int userID, AsyncReturnRecipients response){
 
             this.latitude = lat;
             this.longitude = lon;
@@ -346,9 +352,19 @@ public class ServerRequests {
 
 
             if(userData.equalsIgnoreCase("not found ")){
-                response.done(null);
+                response.returnRecipients(null);
             } else {
                 Log.d("GROUP_FOUND", "-->"+userData);
+                Gson gson = new Gson();
+                JSONArray jsonArray = null;
+                try {
+                    jsonArray = new JSONArray(userData);
+                    Type listType = new TypeToken<List<String>>(){}.getType();
+                    List<String> bookList = gson.fromJson(jsonArray.toString(), listType);
+                    response.returnRecipients(bookList);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
             }
 

@@ -99,4 +99,13 @@
             android:layout_alignStart="@+id/tvEmailProfile" />
     </RelativeLayout>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Group Chat"
+        android:id="@+id/btnGroup"
+        android:layout_below="@+id/textView"
+        android:layout_toRightOf="@+id/btnChat"
+        android:layout_toEndOf="@+id/btnChat" />
+
 </RelativeLayout>

@@ -49,6 +49,7 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
     private TextView tvEmailProfile;
     private TextView tvAccountLevelProfile;
     private Button btnChat;
+    private Button btnGroup;
     private ProgressDialog mProgressDialog;
     //User info
     private String username;
@@ -83,6 +84,7 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
         tvEmailProfile.setText(email);
         tvAccountLevelProfile.setText(accountLevel);
         btnChat = (Button)findViewById(R.id.btnChat);
+        btnGroup = (Button)findViewById(R.id.btnGroup);
         
         // Create an instance of GoogleAPIClient.
         if (mGoogleApiClient == null) {
@@ -98,6 +100,13 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
             public void onClick(View v) {
 
                 fetchUser();
+            }
+        });
+
+        btnGroup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fetchGroup();
             }
         });
 
@@ -174,6 +183,8 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
 
     }
 
+
+
     public void fetchUser(){
 
         sr = new ServerRequests();
@@ -191,6 +202,33 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
                     messageService.removeMessageClientListener(messageClientListener);
                     startActivity(intent);
                     Log.d("USER_FOUND", "-->"+user.getUserName());
+                }
+            }
+        });
+
+    }
+
+    public void fetchGroup(){
+
+        sr = new ServerRequests();
+        sr.fetchGroupDataInBackground("50", "50", userID, new AsyncReturnRecipients() {
+            @Override
+            public void returnRecipients(List<String> recipients) {
+                if (recipients == null) {
+                    Toast.makeText(ProfileActivity.this,
+                            "No group found. We will connect you once somebody is available.",
+                            Toast.LENGTH_LONG).show();
+
+                } else {
+                    for (String recip : recipients) {
+                        Log.d("Recip", "-->" + recip);
+                    }
+//                    Intent intent = new Intent(ProfileActivity.this, MessagingActivity.class);
+//                    intent.putExtra("username", username);
+//                    intent.putExtra("RECIPIENT_ID", user.getUserName());
+//                    startActivity(intent);
+//                    Log.d("USER_FOUND", "-->" + user.getUserName());
+//                    unbindService(serviceConnection);
                 }
             }
         });

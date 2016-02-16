@@ -29,6 +29,7 @@ dependencies {
     compile files('C:/Users/Manjusri/Documents/cis2261_project/Chat_Away_v2/libs/sinch-android-rtc-3.9.2.jar')
     compile files('C:/FinalProject/Chat_Away_v2/libs/sinch-android-rtc-3.9.2.jar')
     compile 'com.google.android.gms:play-services:8.4.0'
+    compile 'com.google.code.gson:gson:2.2.4'
     compile files('C:/Users/RYAN/Documents/cis2261_project/Chat_Away_v2/libs/sinch-android-rtc-3.9.2.jar')
     compile files('C:/Users/mhutchinson110082/Documents/cis2261_project/Chat_Away_v2/libs/sinch-android-rtc-3.9.2.jar')
 }
