@@ -2,6 +2,7 @@ package net.ddns.nimna.chat_away_v2;
 
 import android.app.Service;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Binder;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -18,6 +19,10 @@ import com.sinch.android.rtc.messaging.MessageClientListener;
 import com.sinch.android.rtc.messaging.WritableMessage;
 
 import net.ddns.nimna.chat_away_v2.DAO.MessageDAO;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -95,6 +100,13 @@ public class MessageService extends Service implements SinchClientListener {
     @Override
     public void onClientStopped(SinchClient client) {
         sinchClient = null;
+
+        Cursor cursor = messageDB.getMessagesCursor();
+        JSONArray json = cur2Json(cursor);
+        ServerRequests sr = new ServerRequests();
+
+
+
     }
     @Override
     public void onRegistrationCredentialsRequired(SinchClient client, ClientRegistration clientRegistration) {}
@@ -157,4 +169,38 @@ public class MessageService extends Service implements SinchClientListener {
             return MessageService.this.isSinchClientStarted();
         }
     }
+    private static JSONArray cur2Json(Cursor cursor) {
+        //http://stackoverflow.com/questions/13070791/android-cursor-to-jsonarray
+        JSONArray resultSet = new JSONArray();
+        cursor.moveToFirst();
+        while (cursor.isAfterLast() == false) {
+            final int totalColumn = cursor.getColumnCount();
+            JSONObject rowObject = new JSONObject();
+            int i;// = 0;
+            for (  i = 0; i < totalColumn; i++) {
+
+                if (cursor.getColumnName(i) != null) {
+                    try {
+                        String getcol = cursor.getColumnName(i),
+                                getstr = cursor.getString(i);
+
+
+                        //Log.("ColumnName(i):\t " + getcol + "\t: " + getstr);
+                        rowObject.put(
+                                getcol,
+                                getstr
+                        );
+
+                    } catch (JSONException e) {
+                        //Log.d( e.getMessage()+"");
+                    }
+                }
+            }//for
+           // Log.d("columns i:\t " + i + "\totalColumn:\t " + totalColumn);
+            resultSet.put(rowObject);
+            cursor.moveToNext();
+        }
+
+        return resultSet;
+    }//cur2Json
 }
