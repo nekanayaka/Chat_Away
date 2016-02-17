@@ -86,9 +86,9 @@ public class MessageDAO extends SQLiteOpenHelper {
             ContentValues deliverableValues = new ContentValues();
 
             // NAME, WEIGHT
-            deliverableValues.put("sender", message.get(1));
-            deliverableValues.put("receiver", message.get(2));
-            deliverableValues.put("message", message.get(3));
+            deliverableValues.put("sender", message.get(0));
+            deliverableValues.put("receiver", message.get(1));
+            deliverableValues.put("message", message.get(2));
 
 
             db.insert(TABLE_NAME, null, deliverableValues);

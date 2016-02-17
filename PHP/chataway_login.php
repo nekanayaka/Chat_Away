@@ -27,7 +27,7 @@
 
 		 if(isset($user['userID'])){
 
-			 $userID = $user['userID']);
+			 $userID = $user['userID'];
 			 echo json_encode($user);
 			 $today = date("Y-m-d");
 			 
