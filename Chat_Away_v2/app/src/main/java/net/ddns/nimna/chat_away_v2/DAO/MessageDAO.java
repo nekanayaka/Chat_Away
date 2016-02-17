@@ -21,7 +21,6 @@ public class MessageDAO extends SQLiteOpenHelper {
     public static final String COLUMN_SENDER = "sender";
     public static final String COLUMN_RECEIVER = "receiver";
     public static final String COLUMN_MESSAGE = "message";
-    public static final String COLUMN_DATETIME = "dateTime";
 
     private static final int DB_VERSION = 1;                 // the version of the database
 
@@ -29,8 +28,8 @@ public class MessageDAO extends SQLiteOpenHelper {
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             COLUMN_SENDER + " INTEGER, " +
             COLUMN_RECEIVER + " INTEGER, "+
-            COLUMN_MESSAGE + " TEXT, "+
-            COLUMN_DATETIME + " TEXT);";
+            COLUMN_MESSAGE + " TEXT);";
+
 
     private SQLiteDatabase db;
     private Cursor cursor;
@@ -79,6 +78,23 @@ public class MessageDAO extends SQLiteOpenHelper {
 //            db.execSQL("DROP TABLE IF EXISTS ");
 //            onCreate(db);
 //        }
+    }
+    public boolean insertMessages(ArrayList<ArrayList<String>> messages){
+
+        db = this.getWritableDatabase();
+        for(ArrayList<String> message : messages){
+            ContentValues deliverableValues = new ContentValues();
+
+            // NAME, WEIGHT
+            deliverableValues.put("sender", message.get(1));
+            deliverableValues.put("receiver", message.get(2));
+            deliverableValues.put("message", message.get(3));
+
+
+            db.insert(TABLE_NAME, null, deliverableValues);
+        }
+
+        return true;
     }
 
     /**
@@ -181,12 +197,10 @@ public class MessageDAO extends SQLiteOpenHelper {
 
             if(cursor.moveToFirst()) {
                 do {
-                    int messageId = cursor.getInt(0);
                     int messageSender = Integer.parseInt(cursor.getString(1));
                     int messageReceiver = Integer.parseInt(cursor.getString(2));
                     String messageMessage = cursor.getString(3);
-                    String messageDateTime = cursor.getString(4);
-                    messages.add(new Message(messageId, messageSender, messageReceiver, messageMessage, messageDateTime));
+                    messages.add(new Message(messageSender, messageReceiver, messageMessage));
                 } while( cursor.moveToNext());
             }
 

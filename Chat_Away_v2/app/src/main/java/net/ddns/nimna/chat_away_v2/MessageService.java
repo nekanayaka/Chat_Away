@@ -17,6 +17,10 @@ import com.sinch.android.rtc.messaging.MessageClient;
 import com.sinch.android.rtc.messaging.MessageClientListener;
 import com.sinch.android.rtc.messaging.WritableMessage;
 
+import net.ddns.nimna.chat_away_v2.DAO.MessageDAO;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,10 +37,12 @@ public class MessageService extends Service implements SinchClientListener {
     private String currentUserId;
     private Intent broadcastIntent = new Intent("net.ddns.nimna.chat_away_v2.ProfileActivity");
     private LocalBroadcastManager broadCaster;
+    private ArrayList<ArrayList<String>> messagesArray = new ArrayList<>();
+    private MessageDAO messageDB;
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         //get the current user id from Parse
-
+        messageDB = new MessageDAO(this, null);
 
         currentUserId = intent.getStringExtra("username");
 
@@ -102,6 +108,14 @@ public class MessageService extends Service implements SinchClientListener {
         if (messageClient != null) {
             WritableMessage message = new WritableMessage(recipientUserId, textBody);
             messageClient.send(message);
+            ArrayList<String> info = new ArrayList<>();
+            info.add(currentUserId);
+            info.add(recipientUserId);
+            info.add(message.getTextBody());
+            messagesArray.add(info);
+
+            messageDB.insertMessages(messagesArray);
+
         }
     }
     public void sendGroupMessage(List<String> recipientUserId, String textBody) {
