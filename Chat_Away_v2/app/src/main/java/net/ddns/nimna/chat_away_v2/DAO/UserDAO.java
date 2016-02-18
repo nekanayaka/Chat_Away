@@ -178,7 +178,6 @@ public class UserDAO extends SQLiteOpenHelper {
 //            cursor.moveToFirst();
 //
 //        } catch( SQLiteException ex ) {
-//            Log.d("MessageDAO", "Failed to retrieve messages cursor");
 //        }
 //
 //
