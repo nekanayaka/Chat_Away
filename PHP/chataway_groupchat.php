@@ -30,7 +30,7 @@ if(isset($_POST["latitude"])&&isset($_POST["longitude"])&&isset($_POST["userID"]
 
         $groupID = $row["groupID"];
 
-        $query = "SELECT count(*) FROM groupchatrecipients WHERE groupID = $groupID";
+        $query = "SELECT count(*) FROM groupchatRecipients WHERE groupID = $groupID";
 
 		$countResult = $mysqli->query($query);
         $countRow = $countResult->fetch_row();
@@ -45,7 +45,7 @@ if(isset($_POST["latitude"])&&isset($_POST["longitude"])&&isset($_POST["userID"]
 			
 			$mysqli->query($query);
 			
-			$query = "DELETE FROM groupchatrecipients WHERE groupID = $groupID";
+			$query = "DELETE FROM groupchatRecipients WHERE groupID = $groupID";
 			
 			$mysqli->query($query);
 		}
@@ -59,7 +59,7 @@ if(isset($_POST["latitude"])&&isset($_POST["longitude"])&&isset($_POST["userID"]
     if(isset($finalGroup['groupID'])){
 
         $finalGroupID = $finalGroup['groupID'];
-        $query = "SELECT userID FROM groupchatrecipients WHERE groupID = $finalGroupID";
+        $query = "SELECT userID FROM groupchatRecipients WHERE groupID = $finalGroupID";
         $usernames = array();
 
         $result = $mysqli->query($query);
@@ -82,7 +82,7 @@ if(isset($_POST["latitude"])&&isset($_POST["longitude"])&&isset($_POST["userID"]
         }
 
         echo json_encode($usernames);
-        $query = "INSERT INTO `groupchatrecipients`(`groupID`, `userID`) VALUES ($groupID, $userID)";
+        $query = "INSERT INTO `groupchatRecipients`(`groupID`, `userID`) VALUES ($groupID, $userID)";
 
         $mysqli->query($query);
 
@@ -103,7 +103,7 @@ if(isset($_POST["latitude"])&&isset($_POST["longitude"])&&isset($_POST["userID"]
 
         $groupID = $row[0];
 
-        $query = "INSERT INTO `groupchatrecipients`(`groupID`, `userID`) VALUES ($groupID, $userID)";
+        $query = "INSERT INTO `groupchatRecipients`(`groupID`, `userID`) VALUES ($groupID, $userID)";
 
 
         $mysqli->query($query);

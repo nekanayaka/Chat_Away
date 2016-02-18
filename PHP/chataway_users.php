@@ -47,7 +47,7 @@ if(isset($_POST["latitude"])&&isset($_POST["longitude"])&&isset($_POST["userID"]
 
         $result = $mysqli->query($query);
 
-        $query = "UPDATE user SET requestingChat = 0 WHERE userID = '$userID'";
+        $query = "UPDATE user SET requestingChat = 0, longitude= $long, latitude= $lat WHERE userID = '$userID'";
 
         $result = $mysqli->query($query);
 

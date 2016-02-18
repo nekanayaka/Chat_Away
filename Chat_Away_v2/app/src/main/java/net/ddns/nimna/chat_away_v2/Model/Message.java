@@ -11,21 +11,12 @@ public class Message {
     private String dateTime;
 
 
-    public Message(int id, int sender, int receiver, String message, String dateTime) {
-        this.id = id;
+    public Message(int sender, int receiver, String message) {
         this.sender = sender;
         this.receiver = receiver;
         this.message = message;
-        this.dateTime = dateTime;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public int getSender() {
         return sender;
@@ -51,11 +42,4 @@ public class Message {
         this.message = message;
     }
 
-    public String getDateTime() {
-        return dateTime;
-    }
-
-    public void setDateTime(String dateTime) {
-        this.dateTime = dateTime;
-    }
 }

@@ -186,8 +186,9 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
 
 
     public void fetchUser(){
-
+        //String.valueOf(mLastLocation.getLongitude()), String.valueOf(mLastLocation.getLatitude())
         sr = new ServerRequests();
+
         sr.fetchChatUsersDataInBackground(String.valueOf(mLastLocation.getLongitude()), String.valueOf(mLastLocation.getLatitude()), userID, new AsyncResponse(){
             @Override
             public void done(User user) {
@@ -195,6 +196,7 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
                     Toast.makeText(ProfileActivity.this,
                             "No users found. We will connect you once somebody is available.",
                             Toast.LENGTH_LONG).show();
+                    Log.d("FETCHUSERS", "no user found");
                 } else {
                     Intent intent = new Intent(ProfileActivity.this, MessagingActivity.class);
                     intent.putExtra("username", username);
@@ -211,7 +213,7 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
     public void fetchGroup(){
 
         sr = new ServerRequests();
-        sr.fetchGroupDataInBackground("50", "50", userID, new AsyncReturnRecipients() {
+        sr.fetchGroupDataInBackground(String.valueOf(mLastLocation.getLongitude()), String.valueOf(mLastLocation.getLatitude()), userID, new AsyncReturnRecipients() {
             @Override
             public void returnRecipients(List<String> recipients) {
                 if (recipients == null) {
@@ -220,15 +222,19 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
                             Toast.LENGTH_LONG).show();
 
                 } else {
+                    String[] theRecipients = new String[recipients.size()];
+                    int count = 0;
                     for (String recip : recipients) {
-                        Log.d("Recip", "-->" + recip);
+                        theRecipients[count] = recip;
+                        count++;
                     }
-//                    Intent intent = new Intent(ProfileActivity.this, MessagingActivity.class);
-//                    intent.putExtra("username", username);
-//                    intent.putExtra("RECIPIENT_ID", user.getUserName());
-//                    startActivity(intent);
-//                    Log.d("USER_FOUND", "-->" + user.getUserName());
-//                    unbindService(serviceConnection);
+
+                    Intent intent = new Intent(ProfileActivity.this, GroupMessagingActivity.class);
+                    intent.putExtra("username", username);
+                    intent.putExtra("RECIPIENT_ID", theRecipients);
+
+                    startActivity(intent);
+
                 }
             }
         });

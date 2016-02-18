@@ -13,8 +13,9 @@
 		$longitude  = $mysqli->real_escape_string($_POST["longitude"]);
 		$latitude = $mysqli->real_escape_string($_POST["latitude"]);
 		
+		$today = date("Y-m-d");
 		
-		$sql_query = "INSERT INTO `user`(`username`, `email`, `password`, `accountLevel`, `longitude`, `latitude`) VALUES ('$username', '$email', '$password', '$accountLevel', '$longitude', '$latitude')";
+		$sql_query = "INSERT INTO `user`(`username`, `email`, `password`, `accountLevel`, `banStatus`, `lastLogin`,`requestingChat`,`longitude`, `latitude`) VALUES ('$username', '$email', '$password', '$accountLevel', 0, '$today',0, '$longitude', '$latitude')";
 		$mysqli->query($sql_query);
 	 
 	

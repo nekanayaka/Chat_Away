@@ -27,7 +27,13 @@
 
 		 if(isset($user['userID'])){
 
+			 $userID = $user['userID'];
 			 echo json_encode($user);
+			 $today = date("Y-m-d");
+			 
+			 $query = "UPDATE user SET lastLogin = '$today' WHERE userID = '$userID'";
+
+			 $result = $mysqli->query($query);
 
 		 } else {
 			echo "not found";
