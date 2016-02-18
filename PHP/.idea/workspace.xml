@@ -21,19 +21,13 @@
     <favorites_list name="PHP" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
       <file leaf-file-name="chataway_users.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chataway_users.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.1923075">
+            <state vertical-scroll-proportion="0.0">
               <caret line="12" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="87" />
-              <folding>
-                <marker date="1455739338696" expanded="true" signature="204:1963" placeholder="..." />
-                <marker date="1455739338696" expanded="true" signature="837:1315" placeholder="..." />
-                <marker date="1455739338696" expanded="true" signature="1404:1784" placeholder="..." />
-                <marker date="1455739338696" expanded="true" signature="1792:1961" placeholder="..." />
-                <marker date="1455739338696" expanded="true" signature="1971:1992" placeholder="..." />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -41,31 +35,21 @@
       <file leaf-file-name="chataway_groupchat.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chataway_groupchat.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.038462">
+            <state vertical-scroll-proportion="0.0">
               <caret line="52" column="5" selection-start-line="28" selection-start-column="4" selection-end-line="52" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="chataway_admin_login.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="chataway_admin_login.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chataway_administration/chataway_admin_login.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33239833">
-              <caret line="17" column="37" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
+            <state vertical-scroll-proportion="-8.5">
+              <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="31" selection-end-column="1" />
               <folding>
-                <marker date="1455743402933" expanded="true" signature="278:325" placeholder="SELECT * FRO..user..." />
+                <marker date="1455822365354" expanded="true" signature="296:343" placeholder="SELECT * FRO..user..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="chataway_admin_main.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/chataway_administration/chataway_admin_main.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -73,9 +57,39 @@
       <file leaf-file-name="chataway_admin_auth.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chataway_administration/chataway_admin_auth.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="-4.576923">
+              <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="chataway_admin_userreport.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/chataway_administration/chataway_admin_userreport.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.16666667">
+              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <folding>
+                <marker date="1455823623949" expanded="true" signature="303:342" placeholder="SELECT * FRO..user..." />
+                <marker date="1455823623949" expanded="true" signature="303:343" placeholder="SELECT * FRO..user..." />
+                <marker date="1455823623949" expanded="true" signature="303:347" placeholder="SELECT * FRO..user..." />
+                <marker date="1455823623949" expanded="true" signature="303:348" placeholder="SELECT * FRO..user..." />
+                <marker date="1455823623949" expanded="true" signature="303:355" placeholder="SELECT * FRO..user..." />
+                <marker date="1455823623949" expanded="true" signature="303:360" placeholder="SELECT * FRO..user..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="chataway_login.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chataway_login.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-18.307692">
+              <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="36" />
+              <folding>
+                <marker date="1455821016964" expanded="true" signature="313:397" placeholder="SELECT * FRO..user..." />
+                <marker date="1455821016964" expanded="true" signature="988:1049" placeholder="UPDATE user ..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -88,7 +102,10 @@
         <option value="$PROJECT_DIR$/chataway_users.php" />
         <option value="$PROJECT_DIR$/chataway_administration.php" />
         <option value="$PROJECT_DIR$/chataway_login.php" />
+        <option value="$PROJECT_DIR$/chataway_administration/chataway_admin_main.php" />
+        <option value="$PROJECT_DIR$/chataway_administration/chataway_admin_auth.php" />
         <option value="$PROJECT_DIR$/chataway_administration/chataway_admin_login.php" />
+        <option value="$PROJECT_DIR$/chataway_administration/chataway_admin_userreport.php" />
       </list>
     </option>
   </component>
@@ -97,10 +114,13 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
   </component>
+  <component name="NamedScopeManager">
+    <order />
+  </component>
   <component name="PhpServers">
     <servers />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP 5.6" />
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP" />
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
@@ -128,8 +148,6 @@
       <autoscrollToSource />
       <autoscrollFromSource />
       <sortByType />
-      <manualOrder />
-      <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
       <pane id="ProjectPane">
@@ -171,7 +189,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="C:/xampp/php" />
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RunManager">
@@ -189,17 +207,15 @@
     <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
       <method />
     </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method />
+    </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-options />
       <gulpfile />
       <tasks />
       <arguments />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
-      <command value="run-script" />
-      <scripts />
+      <pass-parent-envs>true</pass-parent-envs>
       <envs />
       <method />
     </configuration>
@@ -219,26 +235,27 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -260,21 +277,15 @@
     <entry file="file://$PROJECT_DIR$/chataway_users.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="87" />
-          <folding>
-            <marker date="1455739338696" expanded="true" signature="204:1963" placeholder="..." />
-            <marker date="1455739338696" expanded="true" signature="837:1315" placeholder="..." />
-            <marker date="1455739338696" expanded="true" signature="1404:1784" placeholder="..." />
-            <marker date="1455739338696" expanded="true" signature="1792:1961" placeholder="..." />
-            <marker date="1455739338696" expanded="true" signature="1971:1992" placeholder="..." />
-          </folding>
+          <caret line="12" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="87" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/chataway_groupchat.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="97" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="97" />
+          <caret line="52" column="5" selection-start-line="28" selection-start-column="4" selection-end-line="52" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -282,21 +293,28 @@
     <entry file="file://$PROJECT_DIR$/chataway_administration/chataway_admin_login.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="0" selection-start-line="7" selection-start-column="72" selection-end-line="8" selection-end-column="0" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1455743402933" expanded="true" signature="278:325" placeholder="SELECT * FRO..user..." />
+            <marker date="1455822365354" expanded="true" signature="296:343" placeholder="SELECT * FRO..user..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chataway_login.php">
+    <entry file="file://$PROJECT_DIR$/chataway_administration/chataway_admin_main.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1455739207816" expanded="true" signature="313:397" placeholder="SELECT * FRO..user..." />
-            <marker date="1455739207816" expanded="true" signature="988:1049" placeholder="UPDATE user ..." />
+            <element signature="e#6#100#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chataway_administration/chataway_admin_auth.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -304,13 +322,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="11" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="87" />
-          <folding>
-            <marker date="1455739338696" expanded="true" signature="204:1963" placeholder="..." />
-            <marker date="1455739338696" expanded="true" signature="837:1315" placeholder="..." />
-            <marker date="1455739338696" expanded="true" signature="1404:1784" placeholder="..." />
-            <marker date="1455739338696" expanded="true" signature="1792:1961" placeholder="..." />
-            <marker date="1455739338696" expanded="true" signature="1971:1992" placeholder="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -327,7 +339,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="8" column="0" selection-start-line="7" selection-start-column="72" selection-end-line="8" selection-end-column="0" />
           <folding>
-            <marker date="1455743402933" expanded="true" signature="278:325" placeholder="SELECT * FRO..user..." />
+            <marker date="1455822365354" expanded="true" signature="296:343" placeholder="SELECT * FRO..user..." />
           </folding>
         </state>
       </provider>
@@ -336,10 +348,41 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chataway_users.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="87" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chataway_groupchat.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="97" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="97" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chataway_administration/chataway_admin_login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="0" selection-start-line="7" selection-start-column="72" selection-end-line="8" selection-end-column="0" />
           <folding>
-            <marker date="1455739207816" expanded="true" signature="313:397" placeholder="SELECT * FRO..user..." />
-            <marker date="1455739207816" expanded="true" signature="988:1049" placeholder="UPDATE user ..." />
+            <marker date="1455822365354" expanded="true" signature="296:343" placeholder="SELECT * FRO..user..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chataway_login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -347,13 +390,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="87" />
-          <folding>
-            <marker date="1455739338696" expanded="true" signature="204:1963" placeholder="..." />
-            <marker date="1455739338696" expanded="true" signature="837:1315" placeholder="..." />
-            <marker date="1455739338696" expanded="true" signature="1404:1784" placeholder="..." />
-            <marker date="1455739338696" expanded="true" signature="1792:1961" placeholder="..." />
-            <marker date="1455739338696" expanded="true" signature="1971:1992" placeholder="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -370,7 +407,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1455743402933" expanded="true" signature="278:325" placeholder="SELECT * FRO..user..." />
+            <marker date="1455822365354" expanded="true" signature="296:343" placeholder="SELECT * FRO..user..." />
           </folding>
         </state>
       </provider>
@@ -379,13 +416,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1455739338696" expanded="true" signature="204:1963" placeholder="..." />
-            <marker date="1455739338696" expanded="true" signature="837:1315" placeholder="..." />
-            <marker date="1455739338696" expanded="true" signature="1404:1784" placeholder="..." />
-            <marker date="1455739338696" expanded="true" signature="1792:1961" placeholder="..." />
-            <marker date="1455739338696" expanded="true" signature="1971:1992" placeholder="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -393,10 +424,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="31" column="17" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
-          <folding>
-            <marker date="1455739207816" expanded="true" signature="313:397" placeholder="SELECT * FRO..user..." />
-            <marker date="1455739207816" expanded="true" signature="988:1049" placeholder="UPDATE user ..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -404,13 +432,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="11" column="200" selection-start-line="11" selection-start-column="200" selection-end-line="11" selection-end-column="200" />
-          <folding>
-            <marker date="1455739338696" expanded="true" signature="204:1963" placeholder="..." />
-            <marker date="1455739338696" expanded="true" signature="837:1315" placeholder="..." />
-            <marker date="1455739338696" expanded="true" signature="1404:1784" placeholder="..." />
-            <marker date="1455739338696" expanded="true" signature="1792:1961" placeholder="..." />
-            <marker date="1455739338696" expanded="true" signature="1971:1992" placeholder="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -418,10 +440,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1455739207816" expanded="true" signature="313:397" placeholder="SELECT * FRO..user..." />
-            <marker date="1455739207816" expanded="true" signature="988:1049" placeholder="UPDATE user ..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -429,13 +448,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1455739338696" expanded="true" signature="204:1963" placeholder="..." />
-            <marker date="1455739338696" expanded="true" signature="837:1315" placeholder="..." />
-            <marker date="1455739338696" expanded="true" signature="1404:1784" placeholder="..." />
-            <marker date="1455739338696" expanded="true" signature="1792:1961" placeholder="..." />
-            <marker date="1455739338696" expanded="true" signature="1971:1992" placeholder="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -443,10 +456,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="40" selection-end-column="4" />
-          <folding>
-            <marker date="1455739207816" expanded="true" signature="313:397" placeholder="SELECT * FRO..user..." />
-            <marker date="1455739207816" expanded="true" signature="988:1049" placeholder="UPDATE user ..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -466,59 +476,70 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/chataway_users.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.1923075">
+        <state vertical-scroll-proportion="0.0">
           <caret line="12" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="87" />
-          <folding>
-            <marker date="1455739338696" expanded="true" signature="204:1963" placeholder="..." />
-            <marker date="1455739338696" expanded="true" signature="837:1315" placeholder="..." />
-            <marker date="1455739338696" expanded="true" signature="1404:1784" placeholder="..." />
-            <marker date="1455739338696" expanded="true" signature="1792:1961" placeholder="..." />
-            <marker date="1455739338696" expanded="true" signature="1971:1992" placeholder="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/chataway_groupchat.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.038462">
-          <caret line="52" column="5" selection-start-line="28" selection-start-column="4" selection-end-line="52" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chataway_login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.61991584">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding>
-            <marker date="1455739207816" expanded="true" signature="313:397" placeholder="SELECT * FRO..user..." />
-            <marker date="1455739207816" expanded="true" signature="988:1049" placeholder="UPDATE user ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chataway_administration/chataway_admin_auth.php">
-      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="52" column="5" selection-start-line="28" selection-start-column="4" selection-end-line="52" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/chataway_administration/chataway_admin_main.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="-5.230769">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="9" selection-end-column="97" />
+          <folding>
+            <element signature="e#6#100#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chataway_login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.307692">
+          <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="36" />
+          <folding>
+            <marker date="1455821016964" expanded="true" signature="313:397" placeholder="SELECT * FRO..user..." />
+            <marker date="1455821016964" expanded="true" signature="988:1049" placeholder="UPDATE user ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chataway_administration/chataway_admin_auth.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.576923">
+          <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/chataway_administration/chataway_admin_login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33239833">
-          <caret line="17" column="37" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
+        <state vertical-scroll-proportion="-8.5">
+          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="31" selection-end-column="1" />
           <folding>
-            <marker date="1455743402933" expanded="true" signature="278:325" placeholder="SELECT * FRO..user..." />
+            <marker date="1455822365354" expanded="true" signature="296:343" placeholder="SELECT * FRO..user..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chataway_administration/chataway_admin_userreport.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16666667">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding>
+            <marker date="1455823623949" expanded="true" signature="303:342" placeholder="SELECT * FRO..user..." />
+            <marker date="1455823623949" expanded="true" signature="303:343" placeholder="SELECT * FRO..user..." />
+            <marker date="1455823623949" expanded="true" signature="303:347" placeholder="SELECT * FRO..user..." />
+            <marker date="1455823623949" expanded="true" signature="303:348" placeholder="SELECT * FRO..user..." />
+            <marker date="1455823623949" expanded="true" signature="303:355" placeholder="SELECT * FRO..user..." />
+            <marker date="1455823623949" expanded="true" signature="303:360" placeholder="SELECT * FRO..user..." />
           </folding>
         </state>
       </provider>
