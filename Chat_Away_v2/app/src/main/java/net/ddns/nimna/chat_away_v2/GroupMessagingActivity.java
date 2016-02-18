@@ -25,6 +25,7 @@ import java.util.List;
 
 public class GroupMessagingActivity extends Activity {
     private String[] recipientId;
+    private List<String> recipients;
     private EditText messageBodyField;
     private String messageBody;
     private MessageService.MessageServiceInterface messageService;
@@ -42,7 +43,7 @@ public class GroupMessagingActivity extends Activity {
         Bundle extra = getIntent().getExtras();
         currentUserId = extra.getString("username");
         recipientId = extra.getStringArray("RECIPIENT_ID");
-        final List<String> recipients = new ArrayList();
+        recipients = new ArrayList();
         for(int i=0;i<recipientId.length;i++){
             recipients.add(recipientId[i]);
         }
@@ -111,11 +112,15 @@ public class GroupMessagingActivity extends Activity {
 
         @Override
         public void onIncomingMessage(MessageClient client, Message message) {
-            //Display an incoming message
-            if (message.getSenderId().equals(recipientId)) {
+
+            for(String anID: recipients){
+                if(!anID.equals(message.getSenderId())){
+                    recipients.add(message.getSenderId());
+                }
+            }
                 WritableMessage writableMessage = new WritableMessage(message.getRecipientIds().get(0), message.getTextBody());
                 messageAdapter.addMessage(writableMessage, MessageAdapter.DIRECTION_INCOMING);
-            }
+
         }
         @Override
         public void onMessageSent(MessageClient client, Message message, String recipientId) {

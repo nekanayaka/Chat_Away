@@ -54,6 +54,7 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
     //User info
     private String username;
     private int userID;
+    private boolean requestingGroupChat;
     //Services
     private ServerRequests sr;
     private BroadcastReceiver mReceiver = null;
@@ -85,6 +86,8 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
         tvAccountLevelProfile.setText(accountLevel);
         btnChat = (Button)findViewById(R.id.btnChat);
         btnGroup = (Button)findViewById(R.id.btnGroup);
+
+        requestingGroupChat = false;
         
         // Create an instance of GoogleAPIClient.
         if (mGoogleApiClient == null) {
@@ -98,7 +101,7 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
         btnChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                requestingGroupChat = false;
                 fetchUser();
             }
         });
@@ -106,6 +109,7 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
         btnGroup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                requestingGroupChat = true;
                 fetchGroup();
             }
         });
@@ -279,11 +283,23 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
         @Override
         public void onIncomingMessage(MessageClient client, Message message) {
 
-            Intent intent = new Intent(ProfileActivity.this, MessagingActivity.class);
-            intent.putExtra("username", username);
-            intent.putExtra("RECIPIENT_ID", message.getSenderId());
-            messageService.removeMessageClientListener(messageClientListener);
-            startActivity(intent);
+            if(requestingGroupChat){
+                String[] theRecipients = new String[1];
+                theRecipients[0] = message.getSenderId();
+
+                Intent intent = new Intent(ProfileActivity.this, GroupMessagingActivity.class);
+                intent.putExtra("username", username);
+                intent.putExtra("RECIPIENT_ID", theRecipients);
+
+                startActivity(intent);
+            } else {
+                Intent intent = new Intent(ProfileActivity.this, MessagingActivity.class);
+                intent.putExtra("username", username);
+                intent.putExtra("RECIPIENT_ID", message.getSenderId());
+                messageService.removeMessageClientListener(messageClientListener);
+                startActivity(intent);
+            }
+
 
 
         }
