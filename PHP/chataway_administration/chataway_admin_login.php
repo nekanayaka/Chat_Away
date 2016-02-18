@@ -15,7 +15,6 @@ if(isset($_POST["user"])&&isset($_POST["pass"])){
 
 
     while($row = $result->fetch_assoc()){
-        echo $row["username"];
 
         $userName = $row["username"];
         $password = $row["password"];
