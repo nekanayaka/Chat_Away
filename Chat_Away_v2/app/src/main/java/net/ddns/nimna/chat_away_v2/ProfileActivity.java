@@ -290,7 +290,7 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
                 Intent intent = new Intent(ProfileActivity.this, GroupMessagingActivity.class);
                 intent.putExtra("username", username);
                 intent.putExtra("RECIPIENT_ID", theRecipients);
-
+                messageService.removeMessageClientListener(messageClientListener);
                 startActivity(intent);
             } else {
                 Intent intent = new Intent(ProfileActivity.this, MessagingActivity.class);
