@@ -61,6 +61,10 @@ public class ServerRequests {
     public void fetchGroupDataInBackground(String lon, String lat, int userID, AsyncReturnRecipients response){
         new FetchGroupDataAsyncTask(lon, lat, userID, response).execute();
     }
+    public void RequestInBackground(int userID){
+        new RequestAsyncTask(userID).execute();
+    }
+
 
     /**
      * This method will be used to send data to the server and get a response from the server
@@ -367,6 +371,44 @@ public class ServerRequests {
                 }
 
             }
+
+
+        }
+    }
+    public class RequestAsyncTask extends AsyncTask<Void, Void, Void>{
+
+        int userID;
+
+        String fileName = "chataway_reqeuesting.php";
+
+        public RequestAsyncTask(int userID){
+
+            this.userID = userID;
+
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            try {
+
+                String data  = URLEncoder.encode("userID", "UTF-8") + "=" + URLEncoder.encode(userID+"", "UTF-8");
+
+
+                String userData = getServerResponse(data, fileName);
+
+                Log.d("User_Data", userData);
+
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+            return null;
+
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+
 
 
         }

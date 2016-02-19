@@ -157,6 +157,13 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
     }
 
     @Override
+    public void onDestroy(){
+        super.onDestroy();
+        sr = new ServerRequests();
+        sr.RequestInBackground(userID);
+    }
+
+    @Override
     public void onConnected(Bundle bundle) {
         //REQUIRED check for permissions
         if ( ContextCompat.checkSelfPermission( this, android.Manifest.permission.ACCESS_COARSE_LOCATION ) != PackageManager.PERMISSION_GRANTED ) {
