@@ -40,8 +40,8 @@ public class ServerRequests {
      * This method will instantiate the storing user data AsyncTask and pass it the user that is passed to it
      * @param user
      */
-    public void storeUserDataInBackground(User user){
-        new StoreUserDataAsyncTask(user).execute();
+    public void storeUserDataInBackground(User user, AsyncValidSignUp response){
+        new StoreUserDataAsyncTask(user, response).execute();
     }
 
     /**
@@ -98,7 +98,7 @@ public class ServerRequests {
 
             serverResponse = sb.toString();
 
-            Log.d("SERVER-RESPONSE", sb.toString());
+            Log.d("SERVER-RESPONSE","-->"+sb.toString()+"<--");
         }catch (MalformedURLException e){
             Log.d("MALFORMED", "EXCEPTION");
             e.printStackTrace();
@@ -115,18 +115,20 @@ public class ServerRequests {
     /**
      * This is an AsyncTask that will be used to store user data when the register
      */
-    public class StoreUserDataAsyncTask extends AsyncTask<Void,Void,Void>{
+    public class StoreUserDataAsyncTask extends AsyncTask<Void,Void,String>{
 
         //this user object will be used later
         User user;
+        AsyncValidSignUp response;
 
         //constructor for the async task that accepts a user as a paramater
-        public StoreUserDataAsyncTask(User user){
+        public StoreUserDataAsyncTask(User user, AsyncValidSignUp response){
             this.user = user;
+            this.response = response;
         }
         //The task that will be done in the background
         @Override
-        protected Void doInBackground(Void... params) {
+        protected String doInBackground(Void... params) {
 
             //declaring the file name of the webservice that will communicate with the database
             String fileName = "chataway_signup.php";
@@ -148,15 +150,20 @@ public class ServerRequests {
                 return null;
             }
                 //calling the method that will get a response and passing it the filename and the data
-                getServerResponse(data, fileName);
+                String result = getServerResponse(data, fileName);
                 //nothing should be returned
-                return null;
+                return result;
 
         }
 
         @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            if(result.equalsIgnoreCase("fail")){
+                response.done("fail");
+            } else {
+                response.done("success");
+            }
         }
     }
 
