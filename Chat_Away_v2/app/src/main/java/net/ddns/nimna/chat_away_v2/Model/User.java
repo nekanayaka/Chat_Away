@@ -1,6 +1,8 @@
 package net.ddns.nimna.chat_away_v2.Model;
 
-
+/**
+ * Created by nekanayaka on 1/18/2016.
+ */
 
 public class User {
 

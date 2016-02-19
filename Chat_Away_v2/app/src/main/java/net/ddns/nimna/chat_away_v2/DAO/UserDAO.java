@@ -11,6 +11,9 @@ import android.util.Log;
 
 import net.ddns.nimna.chat_away_v2.Model.User;
 
+/**
+ * Created by Matthew on 1/18/2016.
+ */
 public class UserDAO extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "";          // <=== Set to 'null' for an in-memory database

@@ -54,13 +54,32 @@ public class ServerRequests {
         new FetchUserDataAsyncTask(username, password, response).execute();
     }
 
+    /**
+     * This method will instantiate the fetch chat user data Asynctask
+     * @param lon
+     * @param lat
+     * @param userID
+     * @param response
+     */
     public void fetchChatUsersDataInBackground(String lon, String lat, int userID, AsyncResponse response){
         new FetchChatUsersDataAsyncTask(lon, lat, userID, response).execute();
     }
 
+    /**
+     * This method will instantiate the fetch group data Asynctask
+     * @param lon
+     * @param lat
+     * @param userID
+     * @param response
+     */
     public void fetchGroupDataInBackground(String lon, String lat, int userID, AsyncReturnRecipients response){
         new FetchGroupDataAsyncTask(lon, lat, userID, response).execute();
     }
+
+    /**
+     * This method will instantiate the request update Asynctask
+     * @param userID
+     */
     public void RequestInBackground(int userID){
         new RequestAsyncTask(userID).execute();
     }

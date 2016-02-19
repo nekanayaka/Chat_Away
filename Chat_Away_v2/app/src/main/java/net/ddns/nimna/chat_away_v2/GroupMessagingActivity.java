@@ -38,8 +38,10 @@ public class GroupMessagingActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.messaging);
+        //binding service to this activity
         bindService(new Intent(this, MessageService.class), serviceConnection, BIND_AUTO_CREATE);
 
+        //getting the logged in userID and the recipients list from the Intent
         Bundle extra = getIntent().getExtras();
         currentUserId = extra.getString("username");
         recipientId = extra.getStringArray("RECIPIENT_ID");
@@ -54,21 +56,21 @@ public class GroupMessagingActivity extends Activity {
         messageAdapter = new MessageAdapter(this);
         messagesList.setAdapter(messageAdapter);
 
-//        final Intent serviceIntent = new Intent(getApplicationContext(), MessageService.class);
-//        startService(serviceIntent);
 
         //listen for a click on the send button
         findViewById(R.id.sendButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //send the message!
+                //if the send button is clicked the text entered is retrieved
                 messageBody = messageBodyField.getText().toString();
+                //if message is empty the user is displayed an error
                 if (messageBody.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Please enter a message", Toast.LENGTH_LONG).show();
                     return;
                 }
                 Log.d("MESSAGE_BODY", "-->" + messageBody);
                 Log.d("RECIPIENT_ID","-->"+recipientId);
+                //the MessageService sendMessage is called which will send the message to the sinch client
                 messageService.sendGroupMessage(recipients, messageBody);
                 messageBodyField.setText("");
             }
@@ -95,6 +97,9 @@ public class GroupMessagingActivity extends Activity {
         }
     }
 
+    /**
+     * This class included all the methods used for the message Listener
+     */
     private class MyMessageClientListener implements MessageClientListener {
         //Notify the user if their message failed to send
         @Override
@@ -110,6 +115,7 @@ public class GroupMessagingActivity extends Activity {
 
         }
 
+        //An incoming message is turned into a WritableMessage object and the message is displayed on the messaging page via the adapter
         @Override
         public void onIncomingMessage(MessageClient client, Message message) {
 

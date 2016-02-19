@@ -70,23 +70,29 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
         setContentView(R.layout.activity_profile);
         bindService(new Intent(this, MessageService.class), serviceConnection, BIND_AUTO_CREATE);
 
+        //getting users information via intent getExtras()
         Bundle extra = getIntent().getExtras();
         username = extra.getString("username");
         userID = Integer.parseInt(extra.getString("userID"));
         String email = extra.getString("email");
         String accountLevel = extra.getString("accountLevel");
+
+        //accessing the Views TextViews
         tvUsernameProfile = (TextView)findViewById(R.id.tvUsernameProfile);
         tvUsernameProfileAccount = (TextView)findViewById(R.id.tvUsernameProfileAccount);
         tvEmailProfile = (TextView)findViewById(R.id.tvEmailProfile);
         tvAccountLevelProfile = (TextView)findViewById(R.id.tvAccountLevelProfile);
-        //Intent intent = getIntent();
+
+        //setting the text to display the proper users information
         tvUsernameProfile.setText(username + "!");
         tvUsernameProfileAccount.setText(username);
         tvEmailProfile.setText(email);
         tvAccountLevelProfile.setText(accountLevel);
+
         btnChat = (Button)findViewById(R.id.btnChat);
         btnGroup = (Button)findViewById(R.id.btnGroup);
 
+        //groupchat boolean is initially set to false
         requestingGroupChat = false;
         
         // Create an instance of GoogleAPIClient.
@@ -98,6 +104,7 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
                     .build();
         }
 
+        //listening for if user clicks Chat
         btnChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,6 +113,7 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
             }
         });
 
+        //listening for if user clicks Group Chat
         btnGroup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,6 +122,7 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
             }
         });
 
+        //The following is for displaying a progress dialog of the Sinch MessageService starting
         mProgressDialog = new ProgressDialog(this);
         mProgressDialog.setTitle("Loading");
         mProgressDialog.setMessage("Please Wait...");
@@ -158,6 +167,7 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
 
     @Override
     public void onDestroy(){
+        //when the profile activity is destroyed then the users requestingChat is set to 0 in the database
         super.onDestroy();
         sr = new ServerRequests();
         sr.RequestInBackground(userID);
@@ -176,8 +186,7 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
                 mGoogleApiClient);
         //Checking location and logging
         if (mLastLocation != null) {
-//            mLatitudeText.setText(String.valueOf(mLastLocation.getLatitude()));
-//            mLongitudeText.setText(String.valueOf(mLastLocation.getLongitude()));
+
             Log.d("LOCATION", "Latitude ="+String.valueOf(mLastLocation.getLatitude()));
             Log.d("LOCATION", "Longtude ="+String.valueOf(mLastLocation.getLongitude()));
 
@@ -195,20 +204,24 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
     }
 
 
-
+    /**
+     * This method will check for an available user and connect the user or display a message if no user is found
+     */
     public void fetchUser(){
-        //String.valueOf(mLastLocation.getLongitude()), String.valueOf(mLastLocation.getLatitude())
-        sr = new ServerRequests();
 
+        //new ServerRequests object is created and the method to fetch an available user is called
+        sr = new ServerRequests();
         sr.fetchChatUsersDataInBackground(String.valueOf(mLastLocation.getLongitude()), String.valueOf(mLastLocation.getLatitude()), userID, new AsyncResponse(){
             @Override
             public void done(User user) {
+                //if no user is found the user is displayed an appropriate message
                 if(user==null){
                     Toast.makeText(ProfileActivity.this,
                             "No users found. We will connect you once somebody is available.",
                             Toast.LENGTH_LONG).show();
                     Log.d("FETCHUSERS", "no user found");
                 } else {
+                    //if another user is found then the user is brough to the messaging activity
                     Intent intent = new Intent(ProfileActivity.this, MessagingActivity.class);
                     intent.putExtra("username", username);
                     intent.putExtra("RECIPIENT_ID", user.getUserName());
@@ -221,25 +234,30 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
 
     }
 
+    /**
+     * This method will check to see if a group chat is available
+     */
     public void fetchGroup(){
 
         sr = new ServerRequests();
         sr.fetchGroupDataInBackground(String.valueOf(mLastLocation.getLongitude()), String.valueOf(mLastLocation.getLatitude()), userID, new AsyncReturnRecipients() {
             @Override
             public void returnRecipients(List<String> recipients) {
+                //if no group is found then the user is displayed a message and a new group chat is created in the database
                 if (recipients == null) {
                     Toast.makeText(ProfileActivity.this,
                             "No group found. We will connect you once somebody is available.",
                             Toast.LENGTH_LONG).show();
 
                 } else {
+                    //if a group is found then the recipients of the groupchat are obtained via the async task
                     String[] theRecipients = new String[recipients.size()];
                     int count = 0;
                     for (String recip : recipients) {
                         theRecipients[count] = recip;
                         count++;
                     }
-
+                    //the user is then brough to the GroupMessage activity and the list of recipients is passed via the intent
                     Intent intent = new Intent(ProfileActivity.this, GroupMessagingActivity.class);
                     intent.putExtra("username", username);
                     intent.putExtra("RECIPIENT_ID", theRecipients);
@@ -258,6 +276,9 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
     }
 
 
+    /**
+     * A listener is implemented on this activity is case a user is not found and the user is waiting to be connected to another user
+     */
     private class MyServiceConnection implements ServiceConnection {
         @Override
         public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
@@ -321,43 +342,5 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
         public void onShouldSendPushData(MessageClient client, Message message, List<PushPair> pushPairs) {}
     }
 
-//    @Override
-//    public void onRequestPermissionsResult(int requestCode,
-//                                           String permissions[], int[] grantResults) {
-//        switch (requestCode) {
-//            case 11: {
-//                // If request is cancelled, the result arrays are empty.
-//                if (grantResults.length > 0
-//                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//
-//                    // permission was granted, yay! Do the
-//                    // contacts-related task you need to do.
-//                    Log.d("LOCATION", "gps enabled");
-//
-//                    try{
-//                        Log.d("LOCATION", locationManager.getBestProvider(criteria, true)+"");
-//                        //noinspection ResourceType
-//                        Location local = locationManager.getLastKnownLocation(locationManager.getProvider("gps").getName());
-//                        local.getLatitude();
-//                        Log.d("LOCATION", local.getLatitude()+"");
-//                    }
-//
-//                    catch(NullPointerException e){
-//                        Log.d("LOCATION", "null pointer exception");
-//                    }
-//
-//
-//                } else {
-//                    Log.d("LOCATION", "gps not enabled");
-//
-//                    // permission denied, boo! Disable the
-//                    // functionality that depends on this permission.
-//                }
-//                return;
-//            }
-//
-//            // other 'case' lines to check for other
-//            // permissions this app might request
-//        }
-//    }
+
 }

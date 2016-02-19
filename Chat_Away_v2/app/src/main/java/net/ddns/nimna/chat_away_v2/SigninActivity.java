@@ -33,14 +33,6 @@ public class SigninActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
-//        tvSignup.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-////                tvSignup_Click(v);
-//                Intent intent = new Intent(SigninActivity.this, SignupActivity.class);
-//                startActivity(intent);
-//            }
-//        });
 
         etUsername = (EditText)findViewById(R.id.tfUsername);
         etPassword = (EditText)findViewById(R.id.tfPassword);
@@ -59,11 +51,17 @@ public class SigninActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * This method will determine if the login information that the user enters is valid via the ServerRequests async task
+     */
     public void userSignIn(){
+
+        //creating ServerRequest object and then calling the method to fetch the users data
         ServerRequests sr = new ServerRequests();
         sr.fetchUserDataInBackground(this.username, this.password, new AsyncResponse() {
             @Override
             public void done(User user) {
+                //if a user is returned then the user is brought to the profile activity
                 if(user!=null) {
                     Intent i = new Intent(SigninActivity.this, ProfileActivity.class);
                     final Intent serviceIntent = new Intent(getApplicationContext(), MessageService.class);
@@ -76,6 +74,7 @@ public class SigninActivity extends AppCompatActivity {
                     startService(serviceIntent);
                 }
                 else {
+                    //if a user is not returned then the user is displayed an error message
                     Toast.makeText(getApplicationContext(), "Username or Password is wrong!", Toast.LENGTH_SHORT).show();
                     etPassword.setText("");
                     etUsername.setText("");

@@ -40,31 +40,30 @@ public class SignupActivity extends AppCompatActivity {
         registerButton = (Button) findViewById(R.id.bttnRegister);
 
 
-
+        //listening for register button click
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //getting data that the user entered
                 password = tfPasswordReg.getText().toString();
                 password2 = tfPasswordReg2.getText().toString();
 
                 username = tfUsernameReg.getText().toString();
                 email = tfEmailReg.getText().toString();
 
-                Log.d("PASSWORD1", password);
-                Log.d("PASSWORD2", password2);
+                //if the user was unable to confirm password they are displayed a message
                 if (!password.equals(password2)) {
                     Toast.makeText(getApplicationContext(), "Passwords don't match!", Toast.LENGTH_SHORT).show(); //getApplication(), getApplicationContext(), SignupActivity.this
+                    //message displayed if the user doesn't fill out the form completely
                 } else if (username.equals("") || password.equals("") || email.equals("")) {
                     Toast.makeText(getApplicationContext(), "Please fill in the information!", Toast.LENGTH_SHORT).show();
                 } else {
+                    //if the information is filled in properly the userSignUp method is called
                     String accountLevel = "regular";
-                    //String coordinates = "something";
                     String latitude = "50";
                     String longitude = "50";
-                    //User user = new User(0, username, encryptPassword(password), email, accountLevel, latitude, longitude);
                     User user = new User(0, username, email, encryptPassword(password), "0", "0", accountLevel, latitude, longitude);
                     userSignUp(user);
-
 
                 }
             }
@@ -74,14 +73,22 @@ public class SignupActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * This method will use the ServerRequests class to store users data in database or display a message if an issue occured
+     * @param user
+     * @return
+     */
     private ServerRequests userSignUp(User user){
+        //creating new ServerRequests object and calling the method for storing users data
         ServerRequests sr = new ServerRequests();
         sr.storeUserDataInBackground(user, new AsyncValidSignUp() {
             @Override
             public void done(String result) {
+                //if the server responds with fail then the users info was not stored and they are displayed an error
                 if(result.equalsIgnoreCase("fail")){
                     Toast.makeText(SignupActivity.this, "Profile failed to create", Toast.LENGTH_SHORT).show();
                 } else {
+                    //if the server didn't respond with fail then the user is displayed a message and brought to the sign in page
                     Toast.makeText(SignupActivity.this, "Profile created successfully!", Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(SignupActivity.this, SigninActivity.class);
                     startActivity(i);
@@ -91,6 +98,11 @@ public class SignupActivity extends AppCompatActivity {
         return sr;
     }
 
+    /**
+     * Method for encrypting password
+     * @param password
+     * @return
+     */
     private static String encryptPassword(String password)
     {
         String sha1 = "";
