@@ -386,7 +386,7 @@ public class ServerRequests {
 
         int userID;
 
-        String fileName = "chataway_reqeuesting.php";
+        String fileName = "chataway_requesting.php";
 
         public RequestAsyncTask(int userID){
 
@@ -401,9 +401,9 @@ public class ServerRequests {
                 String data  = URLEncoder.encode("userID", "UTF-8") + "=" + URLEncoder.encode(userID+"", "UTF-8");
 
 
-                String userData = getServerResponse(data, fileName);
+                String something = getServerResponse(data, fileName);
 
-                Log.d("User_Data", userData);
+                Log.d("SOMETHING", something);
 
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
