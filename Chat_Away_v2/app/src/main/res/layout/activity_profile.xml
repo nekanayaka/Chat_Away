@@ -36,8 +36,7 @@
         android:layout_below="@+id/btnChat"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/accountInfo"
-        android:onClick="bttnAccount_Click">
+        android:id="@+id/accountInfo">
 
         <TextView
             android:layout_width="wrap_content"
