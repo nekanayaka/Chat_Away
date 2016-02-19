@@ -65,10 +65,15 @@ public class SignupActivity extends AppCompatActivity {
                     String longitude = "50";
                     //User user = new User(0, username, encryptPassword(password), email, accountLevel, latitude, longitude);
                     User user = new User(0, username, email, encryptPassword(password), "0", "0", accountLevel, latitude, longitude);
-                    userSignUp(user);
-                    Toast.makeText(SignupActivity.this, "Profile created successfully!", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(SignupActivity.this, SigninActivity.class);
-                    startActivity(i);
+                    if(userSignUp(user).toString().trim().isEmpty()){
+                        Toast.makeText(SignupActivity.this, "Profile created successfully!", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(SignupActivity.this, SigninActivity.class);
+                        startActivity(i);
+                    }
+                    else{
+                        Toast.makeText(SignupActivity.this, "Profile failed to create", Toast.LENGTH_SHORT).show();
+                    }
+
 //
 //                    Intent i = new Intent(SignupActivity.this, ProfileActivity.class);
 //                    i.putExtra("username", username);
@@ -81,9 +86,10 @@ public class SignupActivity extends AppCompatActivity {
 
     }
 
-    private void userSignUp(User user){
+    private ServerRequests userSignUp(User user){
         ServerRequests sr = new ServerRequests();
         sr.storeUserDataInBackground(user);
+        return sr;
     }
 
     private static String encryptPassword(String password)
