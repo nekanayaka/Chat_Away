@@ -50,15 +50,13 @@ public class SignupActivity extends AppCompatActivity {
                 username = tfUsernameReg.getText().toString();
                 email = tfEmailReg.getText().toString();
 
-                Log.d("PASSWORD1",password);
-                Log.d("PASSWORD2",password2);
+                Log.d("PASSWORD1", password);
+                Log.d("PASSWORD2", password2);
                 if (!password.equals(password2)) {
                     Toast.makeText(getApplicationContext(), "Passwords don't match!", Toast.LENGTH_SHORT).show(); //getApplication(), getApplicationContext(), SignupActivity.this
-                }
-                else if(username.equals("") || password.equals("") || email.equals("")) {
+                } else if (username.equals("") || password.equals("") || email.equals("")) {
                     Toast.makeText(getApplicationContext(), "Please fill in the information!", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     String accountLevel = "regular";
                     //String coordinates = "something";
                     String latitude = "50";
@@ -66,13 +64,8 @@ public class SignupActivity extends AppCompatActivity {
                     //User user = new User(0, username, encryptPassword(password), email, accountLevel, latitude, longitude);
                     User user = new User(0, username, email, encryptPassword(password), "0", "0", accountLevel, latitude, longitude);
                     userSignUp(user);
-                    Toast.makeText(SignupActivity.this, "Profile created successfully!", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(SignupActivity.this, SigninActivity.class);
-                    startActivity(i);
-//
-//                    Intent i = new Intent(SignupActivity.this, ProfileActivity.class);
-//                    i.putExtra("username", username);
-//                    startActivity(i);
+
+
                 }
             }
         });
@@ -81,9 +74,21 @@ public class SignupActivity extends AppCompatActivity {
 
     }
 
-    private void userSignUp(User user){
+    private ServerRequests userSignUp(User user){
         ServerRequests sr = new ServerRequests();
-        sr.storeUserDataInBackground(user);
+        sr.storeUserDataInBackground(user, new AsyncValidSignUp() {
+            @Override
+            public void done(String result) {
+                if(result.equalsIgnoreCase("fail")){
+                    Toast.makeText(SignupActivity.this, "Profile failed to create", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(SignupActivity.this, "Profile created successfully!", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(SignupActivity.this, SigninActivity.class);
+                    startActivity(i);
+                }
+            }
+        });
+        return sr;
     }
 
     private static String encryptPassword(String password)
