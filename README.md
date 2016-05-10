@@ -1,0 +1,3 @@
+Project Objective
+
+The overall objective of this project will be developing a system that will allow users to interact and socialize in a new and unique way.  The project will involve the development of a mobile application called Chat Away.  Chat Away will allow for users to create an account and then engage in a random chat with another user within the area.  The user would also have the option of participating in group chats and sending private messages.  In addition to the mobile application some additional administration features will be added that will allow for admins to generate reports, and monitor and block any chat activity.  Over the course of this project implementing all of the above features will be the complete goal.
